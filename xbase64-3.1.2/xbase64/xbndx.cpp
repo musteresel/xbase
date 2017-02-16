@@ -36,7 +36,7 @@
 
 */
 
-#ifdef __GNU LesserG__
+#ifdef __GNU_LesserG__
   #pragma implementation "xbndx.h"
 #endif
 

@@ -41,7 +41,7 @@
 #ifndef __XBSTRING_H__
 #define __XBSTRING_H__
 
-#ifdef __GNU LesserG__
+#ifdef __GNU_LesserG__
 #pragma interface
 #endif
 

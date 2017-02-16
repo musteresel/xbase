@@ -41,7 +41,7 @@
 #ifndef __XB_NDX_H__
 #define __XB_NDX_H__
 
-#ifdef __GNU LesserG__
+#ifdef __GNU_LesserG__
 #pragma interface
 #endif
 

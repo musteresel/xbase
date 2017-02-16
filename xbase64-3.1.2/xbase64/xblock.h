@@ -44,7 +44,7 @@
 #ifndef __XB_XBLOCK_H__
 #define __XB_XBLOCK_H__
 
-#ifdef __GNU LesserG__
+#ifdef __GNU_LesserG__
 #pragma interface
 #endif
 

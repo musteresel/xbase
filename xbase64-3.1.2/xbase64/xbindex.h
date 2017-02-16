@@ -43,7 +43,7 @@
 #ifndef __XB_INDEX_H__
 #define __XB_INDEX_H__
 
-#ifdef __GNU LesserG__
+#ifdef __GNU_LesserG__
 #pragma interface
 #endif
 

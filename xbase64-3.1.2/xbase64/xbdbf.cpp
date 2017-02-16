@@ -39,7 +39,7 @@
 
 */
 
-#ifdef __GNU LesserG__
+#ifdef __GNU_LesserG__
   #pragma implementation "xbdbf.h"
 #endif
 

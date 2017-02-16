@@ -38,7 +38,7 @@
 
 */
 
-#ifdef __GNU LesserG__
+#ifdef __GNU_LesserG__
   #pragma implementation "xbase64.h"
 #endif
 

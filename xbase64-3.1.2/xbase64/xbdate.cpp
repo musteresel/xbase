@@ -40,7 +40,7 @@
 
 */
 
-#ifdef __GNU LesserG__
+#ifdef __GNU_LesserG__
   #pragma implementation "xbdate.h"
 #endif
 
