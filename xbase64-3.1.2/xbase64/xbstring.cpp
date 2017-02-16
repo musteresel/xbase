@@ -461,7 +461,7 @@ void xbString::setNum(long num) {
   \param num
 */
 
-void xbString::setNum( char * fmt, double num) {
+void xbString::setNum(const char * fmt, double num) {
   xbString f;
   f = "%";
   f += fmt;

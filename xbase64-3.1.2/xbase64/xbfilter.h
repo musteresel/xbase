@@ -55,7 +55,7 @@
 class XBDLLEXPORT xbFilter
 {
 public:
-  xbFilter( xbDbf * dbf, xbIndex * index, char * expression );
+  xbFilter( xbDbf * dbf, xbIndex * index, const char * expression );
   virtual ~xbFilter();
 
   xbShort GetFirstFilterRec();

@@ -62,7 +62,7 @@
   \param index
   \param exp
 */
-xbFilter::xbFilter( xbDbf * dbf, xbIndex * index, char * exp )
+xbFilter::xbFilter( xbDbf * dbf, xbIndex * index, const char * exp )
 {
   xbShort rc;
   Status = 0;

@@ -114,7 +114,7 @@ public:
   xbString &remove(size_t pos = 0, int n = npos);
   void     resize(size_t size);  
   void     setNum(long num);
-  void     setNum(char * fmt, double num);
+  void     setNum(const char * fmt, double num);
   xbString &sprintf(const char *format, ...);
   void     swapChars( char from, char to );
   void     toLowerCase();
