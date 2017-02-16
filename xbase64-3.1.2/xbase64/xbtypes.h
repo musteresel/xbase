@@ -85,7 +85,6 @@ typedef short int          xbBool;
 #else
 #endif
 #endif      // XB_LOCKING_ON
-#endif      // __XB_XTYPES_H__
 
 // 64 bit file processing
 #if defined(HAVE_FSEEKO) && defined(HAVE_FTELLO) && defined(XB_LARGEFILE_SUPPORT)
@@ -97,3 +96,5 @@ typedef short int          xbBool;
  #define _fseek fseek
  typedef long xbOffT;
 #endif
+
+#endif      // __XB_XTYPES_H__
