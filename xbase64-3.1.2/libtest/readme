@@ -1,0 +1,10 @@
+The libtest directory includes programs which are designed for
+testing the basic functionality of the library.  These programs
+are intended to be used to find bugs in the basic library functions
+after enhancements/updates or fixes have been applied to the library.
+
+testdate - used for testing date logic
+indextst - used for testing indices
+exptest  - used for testing the expression logic
+locktest - used for the debugging of the record and file locking logic
+lfiletst - used for testing 64 bit file support

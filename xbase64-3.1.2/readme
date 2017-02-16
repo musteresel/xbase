@@ -1,0 +1,108 @@
+                             Xbase64 Version 3.1.0
+                             
+                             
+                             
+WHAT IS IT?
+-----------
+
+Xbase64 is an xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library 
+originally by Gary Kunkel and others (see the AUTHORS file).
+
+Xbase64 is useful for accessing data in legacy dBase 3 and 4 database files as
+well as a general light-weight database engine.  It includes support for
+DBF (dBase version 3 and 4) data files, NDX and NTX indexes, and DBT 
+(dBase version 3 and 4).  It supports file and record locking under *nix
+and Windows.
+
+
+DIRECTORY LAYOUT
+----------------
+
+    /bin        contains various utility programs
+    /examples   contains various test programs
+    /html       contains the original xBase documentation in html format
+    /xbase64    Xbase64 source and header files
+
+
+BUILDING THE LIBRARY ON UNIX/LINUX
+----------------------------------
+
+XBase64 uses autoconf and libtool to manage the build process.
+
+To configure the library for your specific system, run the "configure"
+shell script as follows:
+
+    ./configure
+    
+The configure script accepts the following options in addition to the
+normal default options:
+
+  --enable-debug               creates debugging code [default=no]
+  --enable-shared              build shared libraries [default=yes]
+  --enable-static              build static libraries [default=no]
+  --with-gnu-ld                assume the C compiler uses GNU ld [default=no]
+  --without-index-ndx          turn off .ndx index support 
+  --without-index-ntx          turn off .ntx index support 
+  --without-memo-fields        turn off memo fields support 
+  --without-expressions        turn off expressions support 
+  --without-xbase-locking      turn off XBase file locking 
+  --without-realdelete         turn off XBase record deletion 
+  --without-xbase-debug        turn off XBase specific debug 
+  --without-largefile-support  turn off XBase largefile support
+
+Once configured, execute make as follows to build the library:
+
+    make
+    
+Once compiled (and assuming no errors occurred), use make to install the 
+library, header files, and utilities as follows:
+
+    make install
+    
+The default install directory is /usr/local.  
+
+
+BUILDING THE LIBRARY ON WINDOWS
+-------------------------------
+
+The MINGW32 and CYGWIN compiler support didn't make the first cut to
+Xbase64. They will be migrated forward in a future release of xbase64.
+Any volunteers?
+
+If using the MINGW32 GCC compiler package, use the makefile.g95 make files.
+Edit bin/makefile.g95 xbase/makefile.g95 to change installation directories.
+
+If using the CYGWIN environment, use the makefile.cyg make files (or fix
+the autoconf/automake stuff to work correclty).  However, for some reason
+(as yet undetermined) it seems to run very slowly when compiled with the
+cygwin compiler (perhaps the file handing in the cygwin dll is just dog slow?).
+
+
+BUILDING THE LIRARY WITH BORLAND 5.5
+------------------------------------
+
+There are batch files MAKEBCC.BAT which build the xbase libs for 
+Borland C++ 5.5.
+
+
+
+DOCUMENTATION
+-------------
+
+The documentation at this point consists of the original xBase documentation
+(in the html directory).  It is still very useful as little has changed 
+from the original library except bugfixes and a few enhancements.
+
+We are working on incorporating comments into the source to allow
+generation of reference documentation using the Doxygen document generator.
+A small amount has been done already, but we hope to complete this effort
+before the next release.
+
+
+CONTACT
+-------
+
+Please email comments, bug reports, and patches to Gary Kunkel
+xdb-dev@lists.sourceforge.net
+
+

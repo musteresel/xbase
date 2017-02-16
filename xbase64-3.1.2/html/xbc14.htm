@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC>
+<html>
+<title>Base DBMS Chapter 14</title>
+<body bgcolor=#FFFFFF>
+<h1><p align="center">xbString Methods</p></h1>
+<p align="center">Chapter Updated 8/20/03</p><hr>
+<h2>This table lists the xbString methods.</h2><br><br>
+<table border>
+<caption align=top><h3>xbString Method List API</h3></caption>
+<tr valign=baseline>
+<tr><th align=left>Method<td>Description
+<tr><th align=left>xbString()<td>Class Constructor
+<tr><th align=left>xbString(size_t size)<td>Constructor, allocates space of size
+<tr><th align=left>xbString(char c)<td>Constructor, initialized to char c
+<tr><th align=left>xbString(const char *s)<td>Constructor, initialized to string s
+<tr><th align=left>xbString(const char *s, size_t maxlen<td>
+Constructor, initialized to string s, with minimal string buf size of max_len
+<tr><th align=left>xbString(const xbString &s)<td>Constructor, initialized to string s
+<tr><th align=left>~xbString()<td>Class Destructor 
+<tr><th align=left>const char operator*()<td>Returns data
+<tr><th align=left>char operator[](int n)<td>Returns char in position n
+<tr><th align=left>xbString &operator=(const xbString &s)<br>
+  xbString &operator=(const char *s)<br>xbString &operator=(char c)
+  <td>Set string to <em>s</em> or <em>c</em>.
+<tr><th align=left>xbString &operator+=(const char *s)<br>
+xbSting &operator+=(char c)<td>Concatonate data to string
+<tr><th align=left>xbString &operator-=(const char *s)<br>
+xbSting &operator+=(char c)<td>Concatonate data and eliminate spaces between 
+strings.
+<tr><th align=left>bool operator==(const xbString &)<td>
+Compare string ==
+<tr><th align=left>bool operator!=(const xbString &)<td>
+Compare string !=
+<tr><th align=left>bool operator<(const xbString &s)<td>
+Compare string <
+<tr><th align=left>bool operator>(const xbString &s)<td>
+Compare string >
+<tr><th align=left>bool operator<=(const xbString &s)<td>
+Compare string <=
+<tr><th align=left>bool operator<=(const xbString &s)<td>
+Compare string >=
+<tr><th align=left>xbString addBackSlash( char c )<td>Prefixes all
+char <em>c</em> with a backslash.
+<tr><th align=left>xbString& assign(const xbString& str, size_t pos = 0,
+int len = 1)<td>Assign data in <em>str</em> starting at position <em>pos</em>
+for a length of <em>len</em> and return a reference.
+<tr><th align=left>xbString& assign(const xbString& str, int len )<td>
+Assign data in <em>str</em> for a length of <em>len</em> and return a reference.
+<tr><th align=left>xbString copy() const<td>Used to copy a string
+<tr><th align=left>const char * c_str() const<td>Returns the string or NULL
+if string is null. Depreciated function.
+<tr><th align=left>int countChar( char c ) const<td>Returns the count
+of char <em>c</em>.
+<tr><th align=left>int cvtHexChar( char & out )<td>Converts a four byte
+string in the format of 0x00 to a one byte char value <em>out</em>. Returns
+0 on success, -1 on error.
+<tr><th align=left>int cvtHexString( zbString & out )<td>Converts a 
+string of four byte groupings in the format of 0x00 to a string of one byte 
+characters <em>out</em>. Returns 0 on success, -1 on error.
+<tr><th align=left>char getCharacter( int n ) const<td>Returns the character
+as position <em>n</em>.
+<tr><th align=left>const char *getdata() const<td>Returns the string
+<tr><th align=left>bool hasAlphaChars() const<td>Returns true is string
+contains any alpha characters, otherwise returns false.
+<tr><th align=left>bool isEmpty() const<td>Returns true if the string has
+no memory allocated, or memory allocated is a zero byte string, otherwise
+returns false
+<tr><th align=left>bool isNull() const<td>Returns true if the string
+has no memory allocated for the string, otherwise returns false
+<tr><th align=left>size_t len() const<br>size_t length() const
+<td>Returns length of string. It does not include the null terminating byte.
+<tr><th align=left>xbString mid( size_t pos, int len )<td>Pull a string of 
+data out of another string of data, starting at position <em>pos</em> for a 
+length of <em>len</em>.
+<tr><th align=left>void ltrunc( size_t cnt )<td>Left truncate the string
+<em>cnt</em> bytes.
+<tr><th align=left>int pos(char c)<td>Locate character in string
+<tr><th align=left>int pos(const char *s)<td>Locate string <em>s</em> in string
+<tr><th align=left>void swapChars(char from, char to)<td>Swap character 
+<em>from</em> to character <em>to</em>.
+<tr><th align=left>void putAt(size_t pos, char c)<td>Put character c at position pos
+<tr><th align=left>void remove( size_t pos = 0, int len )<td>Remove data
+from the string to starting at <em>pos</em> for a lenght of <em>len</em>.
+<tr><th align=left>void setNum(long num)<td>This method sets the string
+to the numeric value <em>num</em>.
+<tr><th align=left>xbString &sprintf(const char * format, ... )<td>
+Used to format a string. See the standard C printf function for formatting 
+details.  Internal 256 byte buffer which can be overflowed.
+<tr><th align=left>void toLowerCase()<td>Converts string to lower case
+<tr><th align=left>void toUpperCase()<td>Converts string to upper case
+<tr><th align=left>void trim()<td>trim trailing spaces
+<tr><th align=left>void zapChar( char c )<td>Remove all instances of
+<em>c</em> from the string.
+<tr><th align=left>void zapLeadingChar( char c )<td>Left truncate all 
+of <em>c</em> from the string.
+<tr><th align=left>
+ xbString operator-(const xbString &s1, const xbString &s2)
+<td>Concatonate two strings together, eliminate spaces
+<tr><th align=left>
+ xbString operator+(const xbString &s1, const xbString &s2)<br>
+ xbString operator+(const xbString &s1, const char *s2)<br>
+ xbString operator+(const char *s1, const xbString &s2)<br>
+ xbString operator+(const xbString &s1, char c2)<br>
+ xbString operator+(char c1, const xbString &s2)<td>Concatonate two
+ strings together
+<tr><th align=left>bool operator==(const xbString &, const char *)<td>
+Compare string ==
+<tr><th align=left>bool operator!=(const xbString &, const char *)<td>
+Compare string !=
+</table><br><br><br>
+<h2>Sample program</h2>
+<xmp>
+
+/* string.cpp
+
+    Xbase project source code
+
+    This program demonstrates the usage of the xbString class
+
+    Copyright (C) 1997  Gary A. Kunkel   
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+    Contact:
+
+      Mail:
+  
+        Technology Associates, Inc.
+        XBase Project
+        1455 Deming Way #11
+        Sparks, NV  89434
+        USA
+
+     Email:
+       
+       xbase@techass.com
+       xdb-devel@lists.sourceforge.net
+       xdb-users@lists.sourceforge.net
+
+     Website:
+
+       xdb.sourceforge.net
+
+*/
+
+
+#include <xbase/xbase.h>
+
+int main()
+{
+  xbString s1;
+  xbString s2;
+  
+  s1 = "Some string data";
+  s2 = "some more string data";
+  
+  std::cout << "s1 => " << s1 << std::endl;
+  std::cout << "s2 => " << s2 << std::endl;
+
+
+  s1 = "s1   ";
+  s2 = "s2";
+  s1 -= s2;
+  
+  std::cout << "-= operator => " << s1 << std::endl;
+
+  s1 = "s1   "; 
+  s2 = "s2";
+  s1 += s2;
+  
+  std::cout << "+= operator => " << s1 << std::endl;
+
+  s1 = "some data";
+  s2 = s1.mid( 2, 3 );
+  std::cout << "mid() = " << s2 << std::endl; 
+  
+  return 0;
+}
+
+
+
+</xmp>
+
+
+<br><hr>
+<p><img src="xbase.jpg"><br><hr>
+</body>
+</html>    

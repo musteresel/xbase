@@ -1,0 +1,49 @@
+
+Xbase64  (Sept 15, 2003)
+------------------------
+
+Xbase64 was branched off the xbase C++ class lib project and given a new name.
+
+There are significant changes in this release.
+
+1)  The original author (Gary Kunkel) has resumed working on the project.
+
+2)  The project was branched and renamed to xbase64 with 64 bit file 
+    processing capabilities.  The xbase name is being used by other projects,
+    so I thought it was time for a new name.
+
+3)  Modified the license from LGPL to GPL as recommended by the GNU web site.
+    Files that I have not been able to get permission from the original 
+    author for GPL terms have beed deleted from the library.
+
+4)  Trimmed the tree: Dropped support for the xbHtml class, the turbo vision 
+    interface, and the ybase directory.  These are either unused, not working,
+    undocumented, not maintained, or I didn't have authority to change the 
+    license from LGPL to GPL. 
+    
+5)  Didn't move make files forward that were not documented or working.
+    These need to be reviewed and brought forward.
+    
+6)  Worked on the locking logic. 
+
+7)  Added support for Borland C++ 5.x compiler.
+
+8)  Created a new data type of XB_BOOL.  Current bool data type was causing
+    issues in certain environments.
+
+9)  Dropped support for XB_CASTELLANO dates.  Changed the logic to use
+    system locale settings, this supports descriptive dates in different
+    languages.
+    
+10) Cleaned up memory leaks.
+    
+11) Updates to the documentation.
+
+12) Enhancements to the expression logic
+
+13) Fixed the broken index logic - the ndx and ntx indices are working 
+    again.  
+
+-----------------------------------------------------------------------
+For a the historical NEWS file history (pre 9/15/03), review the older 
+xbase library.

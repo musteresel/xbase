@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC>
+<HTML>
+<TITLE>Xbase DBMS Chapter 1</TITLE>
+<BODY BGCOLOR=#FFFFFF>
+
+<h1><p align="center">Getting Started</p></h1>
+<p align="center">Chapter Updated 8/14/03</p>
+
+<hr><h2>Overview</h2>
+
+Welcome to Xbase DBMS.  Xbase DBMS is a collection of specifications,
+programs, utilities and a C++ class library for manipulating Xbase type
+datafiles and indices.  Xbase has been developed and produced by several
+people from around the world via the internet.
+<br><br>
+
+The term Xbase is often used used to describe the format of the original 
+DBase, Clipper and Foxbase (.DBF) files. Many vendors support the industry 
+standard Xbase file format and are committed to this technology for many 
+years to come, thus insuring continued support.<br><br>
+ 
+The original purpose of the Xbase library was to provide reliable and 
+economical programming tools to programmers for reading, writing and updating 
+DBF databases, indices and memo fields.<br><br><br>
+
+<hr><h2>System Requirements</h2>
+
+To use Xbase DBMS, the following items are needed:<br><br>
+
+A computer and C/C++ compiler.<br><br>
+
+The original source code is developed on a Linux platform with the GCC  
+public domain C/C++ compiler. 
+<br><br>
+
+Xbase DBMS has been successfully ported and runs on Linux, Sun Solaris,
+OpenVMS, FreeBSD, OS2 and DOS/Windows (Using the large memory model).
+<br><br>
+
+This software is not intended to be used on any system using an SCO operating
+system.
+<br><br>
+
+<hr><h2>Classes and User Interface</h2>
+
+There are six classes in the Xbase library which are available
+for use in a typical Xbase application program.<br><br><br>
+
+<CENTER><TABLE BORDER>
+<CAPTION ALIGN=TOP><H3>Xbase Classes - Version 1.8.0 and newer</H3></CAPTION>
+<TR VALIGN=BASELINE>
+<TR><TH ALIGN=LEFT>Class<TD>Basic Description<TD>How Used<TD>Old Class<br>Name 
+<TR><TH ALIGN=LEFT>xbXBase<TD>Basic Xbase Class<TD>Every program gets one of these<TD>XBASE
+<TR><TH ALIGN=LEFT>xbDbf<TD>Database and Field class<TD>Need one of these for each open DBF file<TD>DBF
+<TR><TH ALIGN=LEFT>xbNdx<TD>Ndx index class<TD>Need one of these for each open NDX index<TD>NDX
+<TR><TH ALIGN=LEFT>xbNtx<TD>Ntx index class<TD>Need one of these for each open NTX index
+<TR><TH ALIGN=LEFT>xbString<TD>String class<TD>Used for handling strings
+<TR><TH ALIGN=LEFT>xbHtml<TD>Html generation class<TD>Needed for creating HTML code<TD>HTML
+</TABLE></CENTER>
+<br><br>
+There are other classes used internally by these Xbase classes, but most
+application programs need not to be concerned with. These classes are
+xbStack - used for stack data structures, xbExpn - used for expression 
+logic, and xbDate - used for date manipulation logic.
+
+<br><br>
+<hr><h2>Portability, Type Defs and Structures</h2>
+
+To effectively make the Xbase library as portable across platforms as possible, 
+three things occured.
+<br><br>
+<li>First, the software was developed to run and compile on either big endian 
+or little endian computers and store all numeric data in little endian format.   
+<br><br>
+<li>Secondly, field types must be consistently defined in each environment.  The <em>types.h</em> 
+file defines the xbase data types.  To modify the Xbase code base to function
+in a different (non ported to yet) environment, start by modifying the <em>types.h</em>
+file for your site and recompile.<br><br>
+<li>Thirdly, support for unix automake and autoconf has been to provided
+support on a wide variety of unices.
+<hr><br><br>
+<CENTER>
+<TABLE BORDER>
+<CAPTION ALIGN=TOP><h3>Field Types</h3></CAPTION>
+<TR ALIGN=BASELINE>
+<TR><TH ALIGN=LEFT>Type<TD>Description
+<TR><TH ALIGN=LEFT>xbULong<TD>unsigned long int
+<TR><TH ALIGN=LEFT>xbUShort<TD>unsigned short int
+<TR><TH ALIGN=LEFT>xbShort<TD>short int
+<TR><TH ALIGN=LEFT>xbLong<TD>long
+<TR><TH ALIGN=LEFT>xbFloat<TD>float
+<TR><TH ALIGN=LEFT>xbDouble<TD>double
+<TR><TH ALIGN=LEFT>char<TD>char
+<TR><TH ALIGN=LEFT>void<TD>void
+<TR><TH ALIGN=LEFT>struct SCHEMA<TD>Used for defining record structures
+</TABLE></CENTER>
+<br><br>
+
+Xbase was designed for portability utilizing standard ANSI-C compliant 
+code.  If you decide to write updates to the Xbase project, please try
+to keep your work to standard generic ANSI-C (no special DOS/WINDOWS Calls). 
+<br><br>
+
+<hr><h2>Compilation Overview</h2>
+If you are building the sources on a Linux/Unix platform:<br><br>
+Download the source<br>
+./configure<br>
+make<br>
+su<br>
+make install<br>
+exit<br><br>
+
+<br><br>
+Before compiling the library, you may need to modify the options for your 
+environment. Do "./configure --help" for a list of the current options
+
+<br><br>
+On my server, I had to:
+<li>Verify the library and associated links were copied from xbase/xbase/.libs
+into /usr/local/lib
+<li>Add /usr/local/lib is in /etc/ld.so.conf
+<li>execute program <em>ldconfig</em> as root to refresh the new libs 
+
+<br><br>
+Actual milage at your site may vary.
+<br><br>
+
+<hr><h2>Building a program with the Xbase library</H2>
+
+Create a directory for your project:<br><br>
+
+cd /home/me<br>
+mkdir MyProject<br>
+cd MyProject<br>
+vi MyProg.cpp<br><br>
+
+To use the Xbase classes, include the following header file in the program:
+<br><br>
+
+#include &lt;xbase/xbase.h&gt;<br><br>
+
+For more details, check out the sample programs in the
+xbase/examples directory.
+<br><br>
+<hr><h2>Compiling and Linking Unix Application Program for v3.0 later</h2>
+
+The install script should have provided specific instructions for your 
+environment on how to link with the xbase library. <br><br>
+
+In the Linux environment, assuming that you are using shared libraries,
+and usr/local/lib has been added to 
+the /etc/ld.so.conf file,  and the ldconfig command was executed
+<br><br>
+
+To Compile:<br>
+g++ -c -Wall -I/usr/include -I/usr/src/linux/include-asm-i386 -I/usr/local/include
+-I/usr/local/xbase myprog.cpp<br><br>
+To Link Edit:<br>
+g++ -o myprog myprog.o libxbase.so<br><br>
+
+<hr><h2>Compiling an Application Program with Borland v4.5 C/C++compiler</h2>
+With Borland C compiler:  bcc -Ic:\xbase\src myprog.cpp -Lc:\xbase\src\xbase.lib
+<br><br>
+
+<hr><h2>Getting the latest development version of XBase</h2>
+
+<br>The Xbase project is in an ongoing state of development with new
+enhancements being added and bug fixes being applied as they are found
+and the package maintainers have time.  There are several programmers 
+from various parts of the world working on Xbase.  If you would like to 
+get the latest version of the Xbase library for your project, it is 
+available on sourceforge.net.
+
+<br><h3>Notes about using the current development library</h3>
+<li>1 - Library functions may or may not be documented
+<li>2 - The library may or may not be stable.  This is the development library
+and is being updated with current code changes.  If you are using it, and it 
+does not behave the way you think it should, you may want to drop a note to 
+<A HREF="mailto:xdb-devel@lists.sourceforeg.net">xdb-devel@lists.sourceforge.net
+</A>  This may sound a little unsettling, but the
+library is generally stable.  It goes through periods of time where it is in
+a state of flux when major changes are occurring, but for the most part it is
+probably OK to use.
+<li>3 - If you have changes to contribute to the library, mail your updates 
+to<A HREF="mailto:xdb-devel@lists.sourceforge.net">
+xdb-devel@lists.sourceforge.net</A><br>. 
+
+<hr><br>
+<h2>System Limitations</h2>
+<br>
+Maximum size of a database file is the size of LONG - 2,147,483,647 bytes<br>
+Total number of fields in a database - 1024 <br>
+Total number of characters in all fields - 32767<br>
+Maximum number of characters in a field - 254<br>
+Total number of records in a file - 1 billion<br>
+Maximum index key length - 100 bytes<br>
+Maximum .DBT file memo block size - 32256<br>
+Maximum expression result length - 100 bytes<br>
+Maximum NDX index key length - 100 bytes<br><br>
+<hr><br><br>
+
+<CENTER>
+<TABLE BORDER>
+<CAPTION ALIGN=TOP><H3>Xbase Options - Unix Automake environment</H3></CAPTION>
+<TR VALIGN=BASELINE>
+<TR><TH ALIGN=LEFT>OPTION<TD>DESCRIPTION
+<TR><TH ALIGN=LEFT>--without-xbase-debug<TD>Turns off xbase debugging code
+<TR><TH ALIGN=LEFT>--without-index-ndx<TD>Turns off NDX index options
+<TR><TH ALIGN=LEFT>--without-index-ntx<TD>Turns off NTX index options
+<TR><TH ALIGN=LEFT>--without-memo-fields<TD>Turns off memo fields
+<TR><TH ALIGN=LEFT>--without-expressions<TD>Turns off expression processing
+<TR><TH ALIGN=LEFT>--without-ui-html<TD>Turns off HTML user interface class
+<TR><TH ALIGN=LEFT>--without-xbase-locking<TD>Turns off xbase locking
+<TR><TH ALIGN=LEFT>--without-xbase-debug<TD>Turns off debug logic
+<TR><TH ALIGN=LEFT>--without-exceptions<TD>Turns on exception processing
+<TR><TH ALIGN=LEFT>--with-castellano<TD>Turn on castellano/spanish date options
+<TR><TH ALIGN=LEFT>--without-realdelete<TD>Turn off Xbase record deletion
+<TR><TH ALIGN=LEFT>--without-xbase-filter<TD>Turn off Xbase filter logic
+</TABLE></CENTER>
+<br><br>
+
+Use these options on the command line when executing the <em>./configure</em>
+command. Also, you can execute <em>./configure --help</em> for a complete
+list of all unix configure options.
+<br><br>
+<B>Q</B> Why turn any of thes options off?<br>
+<B>A</B> Smaller library<br><br><hr>
+
+
+<p><img src=xbase.jpg><br><hr>
+</BODY>
+</HTML>

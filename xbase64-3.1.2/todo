@@ -1,0 +1,123 @@
+
+Last updated 2/20/04 - gk
+
+Xbase64 TODO's (not necessarily in this order!)
+-----------------------------------------------
+
+1) Current updates/fixes as documented on source forge
+
+2) Additional expression support
+
+    a) Close out ticket on source forge
+
+    b) RECNO
+       Requires the concept of current DB or USE
+
+       - Set Current table  open, create, select and set, use
+       - Update documentation with new functions
+
+    c) IIF
+       S/b same as a function
+
+    d) RECNO is broke
+    e) STR( "ccc", 2 ) -> returns "ccc" even though length is 2
+    f) STR( -52.345, 3 ) -> return -52.345 even though length is 3 
+    g) DESCEND does not work, not sure what is should do
+    h) DTOC function in testdate program does not work
+    i)  Date: Wed, 10 Feb 1999 16:10:41 +0500 (YEKT)
+       From: Vitaly Fedrushkov <willy@snowyowl.csu.ac.ru>
+
+       Expressions like these are not supported:
+
+       DATE - DATE (= NUM)
+       DATE - NUM  (= DATE)
+       DATE + NUM  (= DATE)
+
+    j) Empty date (like CTOD("  /  /  ") ) is not handled in many cases.
+       In fact, EMPTY() function is not implemented either.
+
+    k) Any other tickets regarding expression logic?
+
+3) rename files
+     dbf.cpp ==> xbdbf.cpp
+
+4)  Real deletes
+
+    - test this functionality
+    - incorporate into dbfutil1
+    - update documentation
+    - impact on indices
+
+5)  dbfutil1
+
+    - update to support table and indice name at open
+
+
+
+2) 64 bit support
+
+3) Finish up multi user locking support for multiple environments
+
+4) Locking
+
+5) Release 3.0
+
+6) Additional index support 
+  - Additional index types (.IDX,.MDX) support
+
+7) Re-install exeception handling
+
+8) Transaction support
+    Create a logging routine - 
+    put hooks in the PutRecord function to log data
+9) Build an SQL front end / module
+10) Add client/server support
+11) Create library front end for perl.
+12) PHP Support
+13) Xbase environment programming language/support/command processing 
+    environment
+
+14) Create Xbase How To
+15) Create Xbase FAQ
+ 
+16) map the xbase function names to standard Dbase names
+
+    opendatabase ==> OpenTable
+    CreateDatabase ==>CreateTable
+
+
+
+
+Documentation
+==============
+
+
+
+
+Design
+======
+
+1)  Extended version of tables to support:
+
+    maybe put info in file with name of filename.xbi, also use same file for 
+    xbase locking purposes
+
+    a) auto index opening closing
+    b) indicator if real delete is on
+    c) 30 byte field names
+
+2)  Think thru design of field names / AUDA storage for expressions
+
+
+
+Website
+=======
+
+Proposed Website Functionality
+
+- documentation - migrate all documentation to source forge
+- other xbase links
+- contribute
+- purchase support
+- quick reference page
+

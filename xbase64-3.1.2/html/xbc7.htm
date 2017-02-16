@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC>
+<HTML>
+<TITLE>Xbase DBMS Chapter 7</TITLE>
+<BODY BGCOLOR=#FFFFFF>
+<H2><p align="center">NTX Indices</p></H2>
+<p align="center">Chapter Updated 2/12/99</p><hr>
+
+The objective of this chapter is to provide information regarding the
+basic concepts of how .NTX index files work in the Xbase environment.<br><br>
+
+The information in this chapter has been gathered by searching the internet
+and by examining the structure of known good NTX indexes.<br><br>
+
+<h4>NTX Index File Characteristics</h4>
+
+<ul><li>NTX indices maintain keys in ascending sort order only.<br><br>
+<li>NTX indices support <em>unique</em> or <em>non unique</em> keys.<br><br>
+
+<em>Unique</em> keys must be unique. The database update routines will 
+fail if an attempt to add a non-unique key is performed.<br><br>
+
+<em>Non-unique</em> Keys are not required to be unique, duplicate
+keys are allowed if the index is created with the XB_NOT_UNIQUE
+setting.  Duplicate keys are stored in record number order.<br><br>
+
+<li>NTX indexes are automatically updated by the Xbase library after the
+indices are opened.<br><br>
+
+<li>Character keys are left justified and padded on the right with spaces.<br><br>
+
+<li>Numeric keys are stored as eight byte double values.<br><br>
+
+The numeric key processing logic performs floating point numeric 
+calculations on eight byte double values.  This logic may be compute intensive
+and slow on older machines, especially the older intel processors without a 
+math coprocessor chip.
+
+</ul>
+
+
+<h4>NTX File Internals</h4>
+
+NTX files are comprised of two or more 1024 byte blocks or nodes of 
+information.  There are three types of nodes: Head Nodes, Interior
+Nodes and Leaf Nodes.<br><br>
+
+The <em>Head Node</em> is the first node in the file starting at 
+position zero (0) and contains information about the NTX file. There
+is only one Head Node in each index and it always starts at the
+beginning of the file.<br><br>
+
+
+<TABLE BORDER>
+<CAPTION ALIGN="TOP"><h3>NTX Header Node</H3></CAPTION>
+<TR VALIGN="BASELINE">
+<TR><TH ALIGN="LEFT">Type<TD>Size<TD>Field Name<TD>Description
+<TR><TH ALIGN="LEFT">xbShort<TD>2<TD>Signature Byte<TD>The Clipper signature byte. 0x003h indicates Clipper 87. 0x006h indicates Clipper 5.x
+<TR><TH ALIGN="LEFT">xbShort<TD>2<TD>Indexing Version Number<TD>Documented as the "Compiler Version" but I have observed an increasing number. Incremented whenever the index is changed.
+<TR><TH ALIGN="LEFT">xbLong<TD>4<TD>First Node Offset<TD>The offset to the first node.
+<TR><TH ALIGN="LEFT">xbLong<TD>4<TD>First Unused Page Offset<TD>The offset to the first unused node.
+<TR><TH ALIGN="LEFT">xbShort<TD>2<TD>Key Size + 8<TD>The Key Size plus 8 bytes.
+<TR><TH ALIGN="LEFT">xbShort<TD>2<TD>Key Size<TD>The size (length) of the key.
+<TR><TH ALIGN="LEFT">xbShort<TD>2<TD>Number of Decimals<TD>Number of decimal places in key.
+<TR><TH ALIGN="LEFT">xbShort<TD>2<TD>Max Items Per Node<TD>The maximum number of key per node.
+<TR><TH ALIGN="LEFT">xbShort<TD>2<TD>1/2 The Max Items Per Node<TD>Half the maximum number of key per node. Important in a B-tree system, as this is the minimum number of keys that must be on a page.
+<TR><TH ALIGN="LEFT">char<TD>256<TD>KeyExpression<TD>Key expression string
+<TR><TH ALIGN="LEFT">char<TD>1<TD>Unique<TD>Unique indicator<br>
+                                00 - Not Unique - XB_NON_UNIQUE<br>
+                                01 - Unique - XB_UNIQUE
+<TR><TH ALIGN="LEFT">char<TD>745<TD>Unused<TD>Unused
+
+
+<TR><TH ALIGN="LEFT"><TD>1024<TD><TD>Total bytes in node
+</TABLE>
+<br><br>
+The following structure is used by the Xbase NTX routines:
+<xmp>
+
+struct NtxHeadNode {		  /* ntx header on disk             */
+    xbUShort Signature;           /* Clipper 5.x or Clipper 87      */
+    xbUShort Version;             /* Compiler Version               */
+                                  /* Also turns out to be           */
+                                  /* a last modified counter        */
+    xbULong StartNode;            /* Offset in file for first node  */
+    xbULong  UnusedOffset;        /* First free node offset         */
+    xbUShort KeySize;             /* Size of items (KeyLen + 8)     */
+    xbUShort KeyLen;              /* Size of the Key                */
+    xbUShort DecimalCount;        /* Number of decimal positions    */
+    xbUShort KeysPerNode;         /* Max number of keys per node    */
+    xbUShort HalfKeysPerNode;     /* Min number of keys per node    */
+    char KeyExpression[256];      /* Null terminated key expression */
+    unsigned  Unique;             /* Unique Flag                    */
+    char NotUsed[745];
+};
+
+</xmp>
+
+<br><br>
+
+<h4>Interior and Leaf Nodes</h4>
+
+NTX files use a B-tree system to store keys. A B-tree is a balanced,
+on disk tree who's design minimizes disk access. Interior Nodes and
+Leaf Nodes share the same structure in an NTX file. The difference is
+that interior nodes point to other nodes. Leaf nodes point to
+nothing. Keys in both interior nodes and leaf nodes point to records
+in a DBF file.
+
+Interior nodes have field LeftNodeNo valued which points to the node
+which points to the keys which are less than the key value in the KeyVal
+field.  There is one more LeftNodeNo value in the node than there are keys.  The
+Last LeftNodeNo points to the node which is greater than the highest
+key value in the node.  <br><br>
+
+Leaf nodes have 0 in the LeftNodeNo field.<br><br>
+
+
+<TABLE BORDER>
+<CAPTION ALIGN="TOP"><h3>NTX Interior Node and Leaf Node Structure</H3></CAPTION>
+<TR VALIGN="BASELINE">
+<TR><TH ALIGN="LEFT">Type<TD>Size<TD>Field Name<TD>Description
+<TR><TH ALIGN="LEFT">xbShort<TD>2<TD>NoOfKeysThisNode<TD>The number of key values in  this node. (N)
+<TR><TH ALIGN="LEFT">Array of xbUShort<TD>2<TD>offsets[]<TD>Array of 
+    <pre>HeadNode.KeysPerNode +1</pre> unsigned longs. 
+ These values are the offsets (in bytes) of each key 
+ in this node, from the beginning of the node.
+<TR><TH ALIGN="LEFT">char<TD>variable<TD>KeyRecs<TD>A repeating structure of
+ pointers and keys.  See the next table for the KeyRec structure.
+</TABLE>
+<br><br>
+
+One primary difference between NDX files and NTX files is that NTX
+files uses an array of offsets on all interior and leaf nodes. Each
+offset is the byte count from the beginning of the node where each
+KeyRec will be found.  The order of the array of offsets determines
+the order of keys on a given node. When keys are added or deleted,
+thus changing the order of the keys on a node, only the order of the
+offset array is changed. All other key data is not moved. This results
+in slightly better index performance.
+
+<BR>
+<TABLE BORDER>
+<CAPTION ALIGN="TOP"><h3>KeyRec Structure</H3></CAPTION>
+<TR VALIGN="BASELINE">
+<TR><TH ALIGN="LEFT">Type<TD>Size<TD>Field Name<TD>Description
+<TR><TH ALIGN="LEFT">xbLong<TD>4<TD>LeftNodeNo<TD>The node number (offset from beginning of file) of the lower node
+ for this key. 0 in Leaf Nodes.
+<TR><TH ALIGN="LEFT">xbLong<TD>4<TD>DbfRecNo<TD>The DBF record number for this key.
+ 0 in Interior Nodes.
+<TR><TH ALIGN="LEFT">char<TD>KeyLen<TD>KeyValue<TD>The key value.
+</TABLE>
+
+<br><br>
+For those interested in knowing how the Xbase DBMS manipulates and
+navigates index files, the following discussion may be helpfull.<br><br>
+
+Xbase DBMS navigates through NTX files by using an in-memory chain of
+nodes of the current location / key in use.  It starts by reading the
+Head Node of the index, which points to the first node of the
+file. The first node of the file will be a leaf node if the index is
+small or will be an interior node if the index has more than one leaf
+node.  The first interior node is loaded into memory, added to the
+node chain and points to the next node to read.  The node is made up
+of one or more keys.  If it is a leaf node, the logic looks for a
+matching key on the node.  It continues down the tree, adding the
+nodes to the in-memory node chain until it reaches the correct 
+node. If it finds a matching key in the leaf node, it returns a XB_FOUND
+condition.  If it doesn't find an exact match in the leaf node, it
+returns a XB_NOT_FOUND condition and stops on the key which is greater
+than the search key given.
+
+<hr>
+<A HREF="mailto:bob@#synxis.com">
+Author: Bob Cotton - bob@synxis.com</A><br>
+</BODY>
+</HTML>

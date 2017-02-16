@@ -1,0 +1,8 @@
+2003-09-15 Gary Kunkel <gkunkel@zhsac.com>
+
+      * branched xbase off of current tree and renamed to xbase64
+        - added 64 bit file support
+	- fixes to multi user windows record and file locking 
+	- changed license to GPL instead of LGPL as recommended by GNU web site
+	- added data type XB_BOOL 
+        - updated documentation

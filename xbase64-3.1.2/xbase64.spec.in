@@ -1,0 +1,67 @@
+# $Id: xbase.spec.in,v 1.10 2003/02/08 03:02:22 dbryson Exp $
+%define xbase_ver @VERSION@
+
+Summary: Xbase dBase database file library
+Name: xbase-@RHREL@-@GXXVER@
+Provides: xbase-@RELEASE@
+Version: %{xbase_ver}
+Release: 1
+Source: xbase-@VERSION@.tar.gz
+Copyright: LGPL
+Group: Development/Libraries
+Packager: Derry Bryson <derry@techass.com>
+Vendor: Xbase Development Team (linux.techass.com/projects/xdb)
+
+%description
+Library for accessing dBase .dbf, .ndx, .dbt, and Clipper .ntx files.
+
+%package -n xbase-devel-@RHREL@-@GXXVER@
+Version: %{xbase_ver}
+Summary: Xbase development package
+Group: Development/Libraries
+Provides: xbase-devel-@RELEASE@
+Requires: xbase-@RELEASE@
+
+%description -n xbase-devel-@RHREL@-@GXXVER@
+Headers and such for compiling programs that use the Xbase library.
+
+%prep
+%setup -n xbase-@VERSION@
+CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr --enable-static
+
+%build
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make DESTDIR=$RPM_BUILD_ROOT install
+
+%post
+/sbin/ldconfig
+
+%postun
+/sbin/ldconfig
+
+%files -n xbase-@RHREL@-@GXXVER@
+/usr/bin/checkndx
+/usr/bin/copydbf
+/usr/bin/deletall
+/usr/bin/dumphdr
+/usr/bin/dumprecs
+/usr/bin/packdbf
+/usr/bin/reindex
+/usr/bin/undelall
+/usr/bin/zap
+/usr/bin/dbfutil1
+/usr/lib/libxbase.so
+/usr/lib/libxbase-@RELEASE@.so.*
+
+%doc NEWS README TODO AUTHORS COPYING ChangeLog
+
+%files -n xbase-devel-@RHREL@-@GXXVER@
+/usr/include/xbase
+/usr/bin/xbase-config
+/usr/lib/libxbase.la
+/usr/lib/libxbase.a
+
+%doc docs/html docs/latex

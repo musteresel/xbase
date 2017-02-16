@@ -1,0 +1,47 @@
+
+This is a list of the people who are or have worked on the xbase64 Library.
+
+Gary Kunkel             <gkunkel@zhsac.com>     - original author,
+                                                  current maintainer of xbase64
+Larry McCourry          <lmccourry@charter.net  - memory leak testing						  
+Sergiy Yakovin          <s.yakovin@if.ukrsotsbank.com> - cdx index support
+
+Previous to this library being branced to xbase64, the following AUTHORS have
+supported xbase to the 2.x release level.
+
+
+
+------------------------------------------------------------------------------
+The following list is the AUTHORS file for the xbase library release 2.
+------------------------------------------------------------------------------
+This is a partial list of the people that have helped with the xbase
+project and something specific they worked on.  Most have worked on more
+than what is listed.
+
+Derry Bryson            <derry@techass.com>     - release 2.x maintainer
+Mario Motta                                     - testing and bugfixes
+Serge Smirnov		<sw1181@mail.ru>	- MSVC stuff and OCAML support
+Frolov Sergey					- bugfixes (memory leaks)
+
+------------------------------------------------------------------------------
+The following is the original AUTHORS file for the xbase library
+------------------------------------------------------------------------------
+This is a partial list of the people that have helped with the xbase
+project and something specific they worked on.  Most have worked on more
+than what is listed.
+
+
+Bob Cotton        <bcotton@synix.com>        - Clipper NTX index support
+Denis Braussen    <postoffice@mail.dotcom.fr> - general support
+Denis Pershin     <dyp@inetlab.com>          - provided library enhancements
+Eirk Bachman      <ebp@geocities.com>        - keeper of definitive Xbase spec 
+Gabriel Emerson   <egabriel@io.com>          - provided logo
+Kehl Hubertus     <kehlh@hotmail.com>        - Xbase to Xbase C++ Perl Converter
+Michael Bedward   <mbedward@ozemail.com.au>  - Expression logic support
+Paul Foster       <paulf@quillandmouse.com>  - general support
+Vitaly Fedrushkov <willy@snowyowl.csu.ac.ru> - TV support and more
+
+------------------------------------------------------------------------------
+
+If you are missing and you should be included in this file, please let me
+know at xbase64-dev@lists.sourceforge.net.  Thanks, Gary Kunkel.
