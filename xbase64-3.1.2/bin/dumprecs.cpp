@@ -84,7 +84,7 @@ int main(int ac,char** av)
     }
 
     std::cout << "Processing file sequentially from beginning..." << std::endl;
-    int i = 0;
+    i = 0;
     while(i<MyFile.NoOfRecords()){
       rc = MyFile.DumpRecord(++i);
       if( rc != XB_NO_ERROR )
