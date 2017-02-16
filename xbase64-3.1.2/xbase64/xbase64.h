@@ -60,7 +60,7 @@
 // ripped from wxWindows
 
 // _declspec works in BC++ 5 and later, as well as VC++
-#if defined(__VISUALC__) || defined(__BORLANDC__) || defined(__GNU LesserC__)
+#if defined(__VISUALC__) || defined(__BORLANDC__) || defined(__GNU_LesserC__)
 #  ifdef XBMAKINGDLL
 #    define XBDLLEXPORT __declspec( dllexport )
 #    define XBDLLEXPORT_DATA(type) __declspec( dllexport ) type

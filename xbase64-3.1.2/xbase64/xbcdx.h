@@ -41,7 +41,7 @@ struct CdxNode
   xbLong leftSibling;
   xbLong rightSibling;
 }
-#ifdef __GNU LesserC__
+#ifdef __GNU_LesserC__
 	__attribute__((packed))
 #endif
 ;
@@ -50,7 +50,7 @@ struct CdxInnerNode: public CdxNode
 {
   char keys[500];
 }
-#ifdef __GNU LesserC__
+#ifdef __GNU_LesserC__
 	__attribute__((packed))
 #endif
 ;
@@ -67,7 +67,7 @@ struct CdxLeafNode: public CdxNode
   char byteCount;
   char keys[488];
 } 
-#ifdef __GNU LesserC__
+#ifdef __GNU_LesserC__
 	__attribute__((packed))
 #endif
 ;
