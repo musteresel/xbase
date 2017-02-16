@@ -1,4 +1,4 @@
-#include "xbNode.h"
+#include "xbnode.h"
 
 void xbNodeLink::AddNode(xbNodeLink* node)
 {
