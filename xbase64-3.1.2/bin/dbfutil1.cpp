@@ -157,7 +157,7 @@ void  MyClass::SetFilter()
   memset( Expression, 0x00, 512 );
   while( !strlen( Expression )){
     std::cout << "Enter filter expression (like AMOUNT<5)" << std::endl;
-    gets( Expression );
+    fgets(Expression, sizeof(Expression), stdin);
   }
   if( xbf )
     delete xbf;
@@ -247,7 +247,7 @@ void MyClass::ProcessExpression()
   while( !strstr( exprsn, "QUIT" ) && !strstr( exprsn, "quit" )){
 
     std::cout << ">";
-    gets( exprsn );
+    fgets(exprsn, sizeof(exprsn), stdin);
 
     if( strstr( exprsn, "HELP" ) || strstr( exprsn, "help" )){
       std::cout << "** Command Help ***"    << std::endl << std::endl;
