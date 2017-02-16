@@ -133,5 +133,5 @@ class XBDLLEXPORT xbIndex: protected xbFile
     int CurLockType;                 /* old locking field             */
 #endif
 };
-
+
 #endif /* __XB_INDEX_H__ */
