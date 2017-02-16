@@ -1,0 +1,25 @@
+From ffdbfbab3429a8db3e5986a879f58227d6c647f9 Mon Sep 17 00:00:00 2001
+From: Wolf <wolf@wolfsden.cz>
+Date: Thu, 16 Feb 2017 02:12:04 +0100
+Subject: [PATCH 7/9] Fix dumprecs.cpp
+
+---
+ xbase64-3.1.2/bin/dumprecs.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xbase64-3.1.2/bin/dumprecs.cpp b/xbase64-3.1.2/bin/dumprecs.cpp
+index 5d79ab2..bf8462b 100644
+--- a/xbase64-3.1.2/bin/dumprecs.cpp
++++ b/xbase64-3.1.2/bin/dumprecs.cpp
+@@ -84,7 +84,7 @@ int main(int ac,char** av)
+     }
+ 
+     std::cout << "Processing file sequentially from beginning..." << std::endl;
+-    int i = 0;
++    i = 0;
+     while(i<MyFile.NoOfRecords()){
+       rc = MyFile.DumpRecord(++i);
+       if( rc != XB_NO_ERROR )
+-- 
+2.11.1
+

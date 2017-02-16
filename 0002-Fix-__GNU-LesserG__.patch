@@ -1,0 +1,319 @@
+From 178b120f5d10d5f1cadf52d2fcdf531afe420eda Mon Sep 17 00:00:00 2001
+From: Wolf <wolf@wolfsden.cz>
+Date: Thu, 16 Feb 2017 01:25:40 +0100
+Subject: [PATCH 2/9] Fix __GNU LesserG__
+
+---
+ xbase64-3.1.2/xbase64/xbase64.cpp  | 2 +-
+ xbase64-3.1.2/xbase64/xbase64.h    | 2 +-
+ xbase64-3.1.2/xbase64/xbdate.cpp   | 2 +-
+ xbase64-3.1.2/xbase64/xbdate.h     | 2 +-
+ xbase64-3.1.2/xbase64/xbdbf.cpp    | 2 +-
+ xbase64-3.1.2/xbase64/xbdbf.h      | 2 +-
+ xbase64-3.1.2/xbase64/xbexp.cpp    | 2 +-
+ xbase64-3.1.2/xbase64/xbexp.h      | 2 +-
+ xbase64-3.1.2/xbase64/xbfile.cpp   | 2 +-
+ xbase64-3.1.2/xbase64/xbfile.h     | 2 +-
+ xbase64-3.1.2/xbase64/xbfilter.cpp | 2 +-
+ xbase64-3.1.2/xbase64/xbfilter.h   | 2 +-
+ xbase64-3.1.2/xbase64/xbindex.cpp  | 2 +-
+ xbase64-3.1.2/xbase64/xbindex.h    | 2 +-
+ xbase64-3.1.2/xbase64/xblock.cpp   | 2 +-
+ xbase64-3.1.2/xbase64/xblock.h     | 2 +-
+ xbase64-3.1.2/xbase64/xbndx.cpp    | 2 +-
+ xbase64-3.1.2/xbase64/xbndx.h      | 2 +-
+ xbase64-3.1.2/xbase64/xbntx.cpp    | 2 +-
+ xbase64-3.1.2/xbase64/xbntx.h      | 2 +-
+ xbase64-3.1.2/xbase64/xbstring.cpp | 2 +-
+ xbase64-3.1.2/xbase64/xbstring.h   | 2 +-
+ 22 files changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/xbase64-3.1.2/xbase64/xbase64.cpp b/xbase64-3.1.2/xbase64/xbase64.cpp
+index fc5613d..8f5ee80 100644
+--- a/xbase64-3.1.2/xbase64/xbase64.cpp
++++ b/xbase64-3.1.2/xbase64/xbase64.cpp
+@@ -38,7 +38,7 @@
+ 
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xbase64.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbase64.h b/xbase64-3.1.2/xbase64/xbase64.h
+index 18ccd7f..876d984 100644
+--- a/xbase64-3.1.2/xbase64/xbase64.h
++++ b/xbase64-3.1.2/xbase64/xbase64.h
+@@ -42,7 +42,7 @@
+ #ifndef __XB_XBASE_H__
+ #define __XB_XBASE_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbdate.cpp b/xbase64-3.1.2/xbase64/xbdate.cpp
+index fd26438..1cc43b4 100644
+--- a/xbase64-3.1.2/xbase64/xbdate.cpp
++++ b/xbase64-3.1.2/xbase64/xbdate.cpp
+@@ -40,7 +40,7 @@
+ 
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xbdate.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbdate.h b/xbase64-3.1.2/xbase64/xbdate.h
+index 617fe50..2d4922a 100644
+--- a/xbase64-3.1.2/xbase64/xbdate.h
++++ b/xbase64-3.1.2/xbase64/xbdate.h
+@@ -45,7 +45,7 @@
+ #ifndef __XB_XBDATE_H__
+ #define __XB_XBDATE_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbdbf.cpp b/xbase64-3.1.2/xbase64/xbdbf.cpp
+index d3790cb..cf5dced 100644
+--- a/xbase64-3.1.2/xbase64/xbdbf.cpp
++++ b/xbase64-3.1.2/xbase64/xbdbf.cpp
+@@ -39,7 +39,7 @@
+ 
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xbdbf.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbdbf.h b/xbase64-3.1.2/xbase64/xbdbf.h
+index ce28e9a..065ce35 100644
+--- a/xbase64-3.1.2/xbase64/xbdbf.h
++++ b/xbase64-3.1.2/xbase64/xbdbf.h
+@@ -41,7 +41,7 @@
+ #ifndef __XB_DBF_H__
+ #define __XB_DBF_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbexp.cpp b/xbase64-3.1.2/xbase64/xbexp.cpp
+index a3e1fa5..45a444f 100644
+--- a/xbase64-3.1.2/xbase64/xbexp.cpp
++++ b/xbase64-3.1.2/xbase64/xbexp.cpp
+@@ -38,7 +38,7 @@
+ 
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xbexp.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbexp.h b/xbase64-3.1.2/xbase64/xbexp.h
+index ec769a9..2227f8d 100644
+--- a/xbase64-3.1.2/xbase64/xbexp.h
++++ b/xbase64-3.1.2/xbase64/xbexp.h
+@@ -42,7 +42,7 @@
+ #ifndef __XB_EXP_H__
+ #define __XB_EXP_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbfile.cpp b/xbase64-3.1.2/xbase64/xbfile.cpp
+index 3ab08da..622b205 100644
+--- a/xbase64-3.1.2/xbase64/xbfile.cpp
++++ b/xbase64-3.1.2/xbase64/xbfile.cpp
+@@ -39,7 +39,7 @@
+ 
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xbfile.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbfile.h b/xbase64-3.1.2/xbase64/xbfile.h
+index 39f1e9d..5ce75d1 100644
+--- a/xbase64-3.1.2/xbase64/xbfile.h
++++ b/xbase64-3.1.2/xbase64/xbfile.h
+@@ -45,7 +45,7 @@
+ #ifndef __XB_FILE_H__
+ #define __XB_FILE_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbfilter.cpp b/xbase64-3.1.2/xbase64/xbfilter.cpp
+index 104e113..5a687cc 100644
+--- a/xbase64-3.1.2/xbase64/xbfilter.cpp
++++ b/xbase64-3.1.2/xbase64/xbfilter.cpp
+@@ -38,7 +38,7 @@
+ 
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xbfilter.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbfilter.h b/xbase64-3.1.2/xbase64/xbfilter.h
+index 578a1da..2f3812f 100644
+--- a/xbase64-3.1.2/xbase64/xbfilter.h
++++ b/xbase64-3.1.2/xbase64/xbfilter.h
+@@ -44,7 +44,7 @@
+ #ifndef __XB_FILTER_H__
+ #define __XB_FILTER_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbindex.cpp b/xbase64-3.1.2/xbase64/xbindex.cpp
+index f3a9c17..46a4bc5 100644
+--- a/xbase64-3.1.2/xbase64/xbindex.cpp
++++ b/xbase64-3.1.2/xbase64/xbindex.cpp
+@@ -37,7 +37,7 @@
+        USA
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xbindex.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbindex.h b/xbase64-3.1.2/xbase64/xbindex.h
+index aa54b5d..07a06b3 100644
+--- a/xbase64-3.1.2/xbase64/xbindex.h
++++ b/xbase64-3.1.2/xbase64/xbindex.h
+@@ -43,7 +43,7 @@
+ #ifndef __XB_INDEX_H__
+ #define __XB_INDEX_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xblock.cpp b/xbase64-3.1.2/xbase64/xblock.cpp
+index c44cbb9..cac0f02 100644
+--- a/xbase64-3.1.2/xbase64/xblock.cpp
++++ b/xbase64-3.1.2/xbase64/xblock.cpp
+@@ -42,7 +42,7 @@
+        USA
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xblock.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xblock.h b/xbase64-3.1.2/xbase64/xblock.h
+index 50dfcf2..49e4ffc 100644
+--- a/xbase64-3.1.2/xbase64/xblock.h
++++ b/xbase64-3.1.2/xbase64/xblock.h
+@@ -44,7 +44,7 @@
+ #ifndef __XB_XBLOCK_H__
+ #define __XB_XBLOCK_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbndx.cpp b/xbase64-3.1.2/xbase64/xbndx.cpp
+index e89bc7a..934c20b 100644
+--- a/xbase64-3.1.2/xbase64/xbndx.cpp
++++ b/xbase64-3.1.2/xbase64/xbndx.cpp
+@@ -36,7 +36,7 @@
+ 
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xbndx.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbndx.h b/xbase64-3.1.2/xbase64/xbndx.h
+index 3dcc6c3..11a51c8 100644
+--- a/xbase64-3.1.2/xbase64/xbndx.h
++++ b/xbase64-3.1.2/xbase64/xbndx.h
+@@ -41,7 +41,7 @@
+ #ifndef __XB_NDX_H__
+ #define __XB_NDX_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbntx.cpp b/xbase64-3.1.2/xbase64/xbntx.cpp
+index 673aa68..54f03c8 100644
+--- a/xbase64-3.1.2/xbase64/xbntx.cpp
++++ b/xbase64-3.1.2/xbase64/xbntx.cpp
+@@ -40,7 +40,7 @@
+        USA
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xbntx.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbntx.h b/xbase64-3.1.2/xbase64/xbntx.h
+index 7c0d701..7a01abd 100644
+--- a/xbase64-3.1.2/xbase64/xbntx.h
++++ b/xbase64-3.1.2/xbase64/xbntx.h
+@@ -42,7 +42,7 @@
+ #ifndef __XB_NTX_H__
+ #define __XB_NTX_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbstring.cpp b/xbase64-3.1.2/xbase64/xbstring.cpp
+index 419014f..aa829ab 100644
+--- a/xbase64-3.1.2/xbase64/xbstring.cpp
++++ b/xbase64-3.1.2/xbase64/xbstring.cpp
+@@ -38,7 +38,7 @@
+ 
+ */
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+   #pragma implementation "xbstring.h"
+ #endif
+ 
+diff --git a/xbase64-3.1.2/xbase64/xbstring.h b/xbase64-3.1.2/xbase64/xbstring.h
+index 9896cdc..1087255 100644
+--- a/xbase64-3.1.2/xbase64/xbstring.h
++++ b/xbase64-3.1.2/xbase64/xbstring.h
+@@ -41,7 +41,7 @@
+ #ifndef __XBSTRING_H__
+ #define __XBSTRING_H__
+ 
+-#ifdef __GNU LesserG__
++#ifdef __GNU_LesserG__
+ #pragma interface
+ #endif
+ 
+-- 
+2.11.1
+

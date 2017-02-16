@@ -1,0 +1,30 @@
+From 0a3f804d70519804315f88312bc2f95551a0b7c2 Mon Sep 17 00:00:00 2001
+From: Wolf <wolf@wolfsden.cz>
+Date: Thu, 16 Feb 2017 02:09:12 +0100
+Subject: [PATCH 5/9] Fix warning with _ftell redefine
+
+---
+ xbase64-3.1.2/xbase64/xbtypes.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/xbase64-3.1.2/xbase64/xbtypes.h b/xbase64-3.1.2/xbase64/xbtypes.h
+index de5f08c..43aff1f 100644
+--- a/xbase64-3.1.2/xbase64/xbtypes.h
++++ b/xbase64-3.1.2/xbase64/xbtypes.h
+@@ -85,7 +85,6 @@ typedef short int          xbBool;
+ #else
+ #endif
+ #endif      // XB_LOCKING_ON
+-#endif      // __XB_XTYPES_H__
+ 
+ // 64 bit file processing
+ #if defined(HAVE_FSEEKO) && defined(HAVE_FTELLO) && defined(XB_LARGEFILE_SUPPORT)
+@@ -97,3 +96,5 @@ typedef short int          xbBool;
+  #define _fseek fseek
+  typedef long xbOffT;
+ #endif
++
++#endif      // __XB_XTYPES_H__
+-- 
+2.11.1
+

@@ -1,0 +1,22 @@
+From a158fa5cd8f37bb76fa48d93d46b069ec962ffa6 Mon Sep 17 00:00:00 2001
+From: Wolf <wolf@wolfsden.cz>
+Date: Thu, 16 Feb 2017 02:10:39 +0100
+Subject: [PATCH 6/9] Fix include case in xbnode.cpp
+
+---
+ xbase64-3.1.2/xbase64/xbnode.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xbase64-3.1.2/xbase64/xbnode.cpp b/xbase64-3.1.2/xbase64/xbnode.cpp
+index 2c9c3b6..b7aa4ea 100644
+--- a/xbase64-3.1.2/xbase64/xbnode.cpp
++++ b/xbase64-3.1.2/xbase64/xbnode.cpp
+@@ -1,4 +1,4 @@
+-#include "xbNode.h"
++#include "xbnode.h"
+ 
+ void xbNodeLink::AddNode(xbNodeLink* node)
+ {
+-- 
+2.11.1
+

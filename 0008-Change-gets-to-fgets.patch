@@ -1,0 +1,34 @@
+From fe94d2c584f15cd49c2b1f7d09a015cdc3969b9c Mon Sep 17 00:00:00 2001
+From: Wolf <wolf@wolfsden.cz>
+Date: Thu, 16 Feb 2017 02:16:55 +0100
+Subject: [PATCH 8/9] Change gets to fgets
+
+---
+ xbase64-3.1.2/bin/dbfutil1.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/xbase64-3.1.2/bin/dbfutil1.cpp b/xbase64-3.1.2/bin/dbfutil1.cpp
+index 0b74d41..6b91c0b 100644
+--- a/xbase64-3.1.2/bin/dbfutil1.cpp
++++ b/xbase64-3.1.2/bin/dbfutil1.cpp
+@@ -157,7 +157,7 @@ void  MyClass::SetFilter()
+   memset( Expression, 0x00, 512 );
+   while( !strlen( Expression )){
+     std::cout << "Enter filter expression (like AMOUNT<5)" << std::endl;
+-    gets( Expression );
++    fgets(Expression, sizeof(Expression), stdin);
+   }
+   if( xbf )
+     delete xbf;
+@@ -247,7 +247,7 @@ void MyClass::ProcessExpression()
+   while( !strstr( exprsn, "QUIT" ) && !strstr( exprsn, "quit" )){
+ 
+     std::cout << ">";
+-    gets( exprsn );
++    fgets(exprsn, sizeof(exprsn), stdin);
+ 
+     if( strstr( exprsn, "HELP" ) || strstr( exprsn, "help" )){
+       std::cout << "** Command Help ***"    << std::endl << std::endl;
+-- 
+2.11.1
+

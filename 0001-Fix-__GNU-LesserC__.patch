@@ -1,0 +1,57 @@
+From 18480a45f1ec3a1c0b9e38152a2f7d85f5cb38cf Mon Sep 17 00:00:00 2001
+From: Wolf <wolf@wolfsden.cz>
+Date: Thu, 16 Feb 2017 01:21:47 +0100
+Subject: [PATCH 1/9] Fix __GNU LesserC__
+
+---
+ xbase64-3.1.2/xbase64/xbase64.h | 2 +-
+ xbase64-3.1.2/xbase64/xbcdx.h   | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/xbase64-3.1.2/xbase64/xbase64.h b/xbase64-3.1.2/xbase64/xbase64.h
+index 7267299..18ccd7f 100644
+--- a/xbase64-3.1.2/xbase64/xbase64.h
++++ b/xbase64-3.1.2/xbase64/xbase64.h
+@@ -60,7 +60,7 @@
+ // ripped from wxWindows
+ 
+ // _declspec works in BC++ 5 and later, as well as VC++
+-#if defined(__VISUALC__) || defined(__BORLANDC__) || defined(__GNU LesserC__)
++#if defined(__VISUALC__) || defined(__BORLANDC__) || defined(__GNU_LesserC__)
+ #  ifdef XBMAKINGDLL
+ #    define XBDLLEXPORT __declspec( dllexport )
+ #    define XBDLLEXPORT_DATA(type) __declspec( dllexport ) type
+diff --git a/xbase64-3.1.2/xbase64/xbcdx.h b/xbase64-3.1.2/xbase64/xbcdx.h
+index 97aeb60..d73aebd 100644
+--- a/xbase64-3.1.2/xbase64/xbcdx.h
++++ b/xbase64-3.1.2/xbase64/xbcdx.h
+@@ -41,7 +41,7 @@ struct CdxNode
+   xbLong leftSibling;
+   xbLong rightSibling;
+ }
+-#ifdef __GNU LesserC__
++#ifdef __GNU_LesserC__
+ 	__attribute__((packed))
+ #endif
+ ;
+@@ -50,7 +50,7 @@ struct CdxInnerNode: public CdxNode
+ {
+   char keys[500];
+ }
+-#ifdef __GNU LesserC__
++#ifdef __GNU_LesserC__
+ 	__attribute__((packed))
+ #endif
+ ;
+@@ -67,7 +67,7 @@ struct CdxLeafNode: public CdxNode
+   char byteCount;
+   char keys[488];
+ } 
+-#ifdef __GNU LesserC__
++#ifdef __GNU_LesserC__
+ 	__attribute__((packed))
+ #endif
+ ;
+-- 
+2.11.1
+

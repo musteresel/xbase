@@ -1,0 +1,61 @@
+From 976fc4a56f7bae01d794fda4b4f92316e85ce6d2 Mon Sep 17 00:00:00 2001
+From: Wolf <wolf@wolfsden.cz>
+Date: Thu, 16 Feb 2017 02:03:12 +0100
+Subject: [PATCH 4/9] Fix xblock.cpp
+
+---
+ xbase64-3.1.2/xbase64/xblock.cpp | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/xbase64-3.1.2/xbase64/xblock.cpp b/xbase64-3.1.2/xbase64/xblock.cpp
+index cac0f02..51eb8e7 100644
+--- a/xbase64-3.1.2/xbase64/xblock.cpp
++++ b/xbase64-3.1.2/xbase64/xblock.cpp
+@@ -82,7 +82,7 @@ xbLock::xbLock(xbDbf * pdbf)
+   TableLockCnt = 0;
+   MemoLockCnt  = 0;
+   IndexLockCnt = 0;
+-  std::cout << "xbLock constructor" << std::cout;
++  std::cout << "xbLock constructor" << std::endl;
+ }
+ /*************************************************************************/
+ xbLock::~xbLock()
+@@ -167,7 +167,7 @@ else if( LockType == XB_LOCK || LockType == XB_LOCK_HOLD )
+ /*************************************************************************/
+ xbaseLock::xbaseLock( xbDbf * pdbf ) : xbLock( pdbf )
+ {
+-  std::cout << "xbaseLock constructor" << std::cout;
++  std::cout << "xbaseLock constructor" << std::endl;
+ }
+ /*************************************************************************/
+ xbShort xbaseLock::LockTableHeader( xbShort LockType )
+@@ -334,7 +334,7 @@ xbShort xbaseLock::LockInit()
+ /*************************************************************************/
+ dbaseLock::dbaseLock( xbDbf * pdbf ) : xbLock( pdbf )
+ {
+-  std::cout << "dbaseLock constructor" << std::cout;
++  std::cout << "dbaseLock constructor" << std::endl;
+ }
+ /*************************************************************************/
+ xbShort dbaseLock::LockTableHeader( xbShort LockType )
+@@ -458,7 +458,7 @@ xbShort dbaseLock::UnlockAll()
+ /*************************************************************************/
+ clipperLock::clipperLock( xbDbf * pdbf ) : xbLock( pdbf )
+ {
+-  std::cout << "clipperLock constructor" << std::cout;
++  std::cout << "clipperLock constructor" << std::endl;
+ }
+ /*************************************************************************/
+ xbShort clipperLock::LockTableHeader( xbShort LockType )
+@@ -521,7 +521,7 @@ xbShort clipperLock::UnlockAll()
+ /*************************************************************************/
+ foxproLock::foxproLock( xbDbf * pdbf ) : xbLock( pdbf )
+ {
+-  std::cout << "foxproLock constructor" << std::cout;
++  std::cout << "foxproLock constructor" << std::endl;
+ }
+ /*************************************************************************/
+ xbShort foxproLock::LockTableHeader( xbShort LockType )
+-- 
+2.11.1
+
