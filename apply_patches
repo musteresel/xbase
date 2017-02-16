@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+git checkout master || exit 1
+git reset --hard || exit 1
+for pf in 000*.patch; do
+	echo $pf
+	git apply $pf || exit 1
+done
