@@ -1,0 +1,15 @@
+/.deps
+/.libs
+
+/checkndx
+/copydbf
+/dbfutil1
+/dbfxtrct
+/deletall
+/dumpdbt
+/dumphdr
+/dumprecs
+/packdbf
+/reindex
+/undelall
+/zap
