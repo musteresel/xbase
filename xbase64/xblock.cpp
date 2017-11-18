@@ -294,11 +294,12 @@ xbShort xbaseLock::LockIndex( xbShort LockType )
 
   rc = LockFile( fileno( lfh ), LockType, 1 );
   
-  if( rc == XB_NO_ERROR )
+  if( rc == XB_NO_ERROR ) {
     if( LockType == XB_UNLOCK )
       IndexLockCnt--;
     else
       IndexLockCnt++;
+  }
 
   return rc; 
 }

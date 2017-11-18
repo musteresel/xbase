@@ -890,7 +890,6 @@ char * xbExpn::STR( xbDouble d )
 */
 char * xbExpn::STR( const char * String, xbShort length, xbShort dec )
 {
-  xbShort len, i;
   double d;
   d = strtod( String, NULL );
   return STR( d, length, dec );

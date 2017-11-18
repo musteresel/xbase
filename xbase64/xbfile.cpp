@@ -60,8 +60,8 @@ xbString xbFile::MakeFileName(const char *name)
   const char *extUpper=GetExtWithDot(false);
   int lenLower=strlen(extLower);
   int lenUpper=strlen(extUpper);
-  if (len>lenLower && strcmp(&name[len-lenLower], extLower)==0 ||
-       len>lenUpper && strcmp(&name[len-lenUpper], extUpper)==0) return file;
+  if ((len>lenLower && strcmp(&name[len-lenLower], extLower)==0) ||
+      (len>lenUpper && strcmp(&name[len-lenUpper], extUpper)==0)) return file;
   char lastSymbol=name[len-1];
   file+=GetExtWithDot(lastSymbol<'A' || lastSymbol>'Z');
   return file;

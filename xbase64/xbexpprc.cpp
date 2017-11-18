@@ -233,7 +233,7 @@ xbShort xbExpn::ProcessExpression( xbExpNode * Wtree, xbShort RecBufSw )
     } else if( WorkNode->Type == 'F' )
       if(( rc = ProcessFunction( WorkNode->NodeText )) != XB_NO_ERROR )
         return rc;
-      WorkNode = GetNextTreeNode( WorkNode );
+    WorkNode = GetNextTreeNode( WorkNode );
   }
   if( GetStackDepth() != 1 )    /* should only have result left in stack */
     return XB_PARSE_ERROR;

@@ -370,7 +370,7 @@ int xbDate::DateIsValid( const char * Date8 ) const
       return 0;
 
    /* check for February with leap year */
-   if( month == 2 )
+   if( month == 2 ) {
      if( IsLeapYear( Date8 ))
      {
        if( day > 29 )
@@ -381,6 +381,7 @@ int xbDate::DateIsValid( const char * Date8 ) const
        if( day > 28 )
          return 0;
      }
+   }
    return 1;
 }
 

@@ -947,9 +947,10 @@ xbShort xbNdx::FindKey( const char * Tkey, xbShort Klen, xbShort RetrieveSw )
     case 0 : /* found! */
       CurNode->CurKeyNo = i;
       CurDbfRec = GetDbfNo( i, CurNode );
-      if( RetrieveSw )
+      if( RetrieveSw ) {
         dbf->GetRecord(CurDbfRec);
-        return XB_FOUND;
+      }
+      return XB_FOUND;
      
     case 1 : /* less than */
 //       if(i < CurNode->Leaf.NoOfKeysThisNode)

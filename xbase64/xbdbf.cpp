@@ -292,11 +292,12 @@ xbShort xbDbf::NameSuffixMissing( xbShort type, const char * name )
   xbShort len;
 
   len = strlen( name );
-  if( len <= 4 )
+  if( len <= 4 ) {
     if( name[len-1] >= 'A' && name[len-1] <= 'Z' )
       return 2;
     else
       return 1;
+  }
 
   if( type == 1          && name[len-4] == '.' &&
      ( name[len-3] == 'd' || name[len-3] == 'D' ) && 
@@ -1918,8 +1919,8 @@ xbShort xbDbf::CreateUniqueDbfName( xbString & sDbfn, xbString & sDbtn )
   char dbtn[13];
   
   dnf = xbase->DirectoryExistsInName( GetFileName() );
-  sprintf( dbfn, "xb%06d.dbf", l );
-  sprintf( dbtn, "xb%06d.dbt", l++ );
+  sprintf( dbfn, "xb%06ld.dbf", l );
+  sprintf( dbtn, "xb%06ld.dbt", l++ );
   
   if( dnf ){
     sDbfn.assign( GetFileName(), 0, dnf );
@@ -1936,8 +1937,8 @@ xbShort xbDbf::CreateUniqueDbfName( xbString & sDbfn, xbString & sDbtn )
         access( sDbtn.getData(), 0 ) == -1 )
       unique++;
     else{
-      sprintf( dbfn, "xb%06d.dbf", l );
-      sprintf( dbtn, "xb%06d.dbt", l++ );
+      sprintf( dbfn, "xb%06ld.dbf", l );
+      sprintf( dbtn, "xb%06ld.dbt", l++ );
     
       if( dnf ){
         sDbfn.assign( GetFileName(), 0, dnf );
@@ -2425,8 +2426,8 @@ xbShort xbDbf::DeleteAll( xbShort Option )
       if( RecordDeleted())
         if(( rc = UndeleteRecord()) != XB_NO_ERROR )
           return rc;
-        if(( rc = GetNextRecord()) != XB_NO_ERROR )
-          break;
+      if(( rc = GetNextRecord()) != XB_NO_ERROR )
+        break;
     }
   }
   if( rc == XB_EOF )

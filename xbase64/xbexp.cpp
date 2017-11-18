@@ -690,9 +690,10 @@ xbShort xbExpn::BuildExpressionTree( const char * Expression,
         return XB_INVALID_FIELD;
         strncpy( TempField, p, TokenLen );
       }
-      if(( FieldNo = TempDbf->GetFieldNo( TempField )) == -1 )
+      if(( FieldNo = TempDbf->GetFieldNo( TempField )) == -1 ) {
         return XB_INVALID_FIELD;
-        BufLen = TempDbf->GetFieldLen( FieldNo ) + 1;
+      }
+      BufLen = TempDbf->GetFieldLen( FieldNo ) + 1;
     }
     else if( TokenType == 'C' || TokenType == 'N' )
       BufLen = TokenLen + 1;
@@ -723,9 +724,9 @@ xbShort xbExpn::BuildExpressionTree( const char * Expression,
           return rc;
 
         xbShort parmCnt = GetFuncInfo( p, 1 );
-        if( (parmCnt == 1 || parmCnt == 101 ) && !CurNode->Sibling1 ||
-            (parmCnt == 2 || parmCnt == 201 ) && !CurNode->Sibling2 || 
-            (parmCnt == 3 ) && !CurNode->Sibling3 )
+        if( ((parmCnt == 1 || parmCnt == 101 ) && !CurNode->Sibling1) ||
+            ((parmCnt == 2 || parmCnt == 201 ) && !CurNode->Sibling2) || 
+            ((parmCnt == 3 ) && !CurNode->Sibling3) )
           return XB_INSUFFICIENT_PARMS;
         else if( parmCnt == 0 && CurNode->Sibling1 )
           return XB_TOO_MANY_PARMS;
@@ -1101,7 +1102,7 @@ void xbExpn::DumpExpNode(xbExpNode *e, xbShort printOption)
       return;
  
     fprintf( dmp, "******* Exp Node *******\n" );
-    fprintf( dmp, "Exp Node Address = %x\n", e );
+    fprintf( dmp, "Exp Node Address = %p\n", e );
     fprintf( dmp, "Node Text        = %s\n", ntext.getData());
     fprintf( dmp, "Type             = %c\n", e->Type );
     fprintf( dmp, "Len              = %d\n", e->Len );
@@ -1109,19 +1110,19 @@ void xbExpn::DumpExpNode(xbExpNode *e, xbShort printOption)
     fprintf( dmp, "Field No         = %d\n", e->FieldNo );
     fprintf( dmp, "ExpressionType   = %c\n", e->ExpressionType );
     fprintf( dmp, "StringResult     = %s\n", e->StringResult.getData());
-    fprintf( dmp, "DoubResult       = %d\n", e->DoubResult );
+    fprintf( dmp, "DoubResult       = %f\n", e->DoubResult );
     fprintf( dmp, "IntResult        = %d\n", e->IntResult );
     fprintf( dmp, "ResultLen        = %d\n", e->ResultLen );
     fprintf( dmp, "DataLen          = %x\n", e->DataLen );
 
     if( e->Node ) 
-      fprintf( dmp, "Parent           = %x\n", e->Node );
+      fprintf( dmp, "Parent           = %p\n", e->Node );
     if( e->Sibling1 ) 
-      fprintf( dmp, "Sibling 1        = %x\n", e->Sibling1 );
+      fprintf( dmp, "Sibling 1        = %p\n", e->Sibling1 );
     if( e->Sibling2 ) 
-      fprintf( dmp, "Sibling 2        = %x\n", e->Sibling2 );
+      fprintf( dmp, "Sibling 2        = %p\n", e->Sibling2 );
     if( e->Sibling3 ) 
-      fprintf( dmp, "Sibling 3        = %x\n", e->Sibling3 );
+      fprintf( dmp, "Sibling 3        = %p\n", e->Sibling3 );
     fprintf( dmp, "\n" );
     fclose( dmp );
   }

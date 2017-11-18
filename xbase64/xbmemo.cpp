@@ -1011,7 +1011,7 @@ xbShort xbDbf::UpdateMemoData( xbShort FieldNo, xbLong DataLen,
   xbLong  BlocksNeeded, BlocksAvailable;
 
   #ifdef XB_LOCKING_ON
-  if( LockOpt != -1 )
+//  if( LockOpt != -1 )
 //    if(( rc = LockMemoFile( XB_LOCK )) != XB_NO_ERROR )
 //      return XB_LOCK_FAILED;
   #endif

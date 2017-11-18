@@ -123,7 +123,7 @@ int main()
       std::cout.flush();
     }
     memset( charbuf, 0x00, 10 );
-    sprintf( charbuf, "%d", i );
+    sprintf( charbuf, "%ld", i );
     MyFile.BlankRecord();
     MyFile.PutField( f1, charbuf );
     MyFile.PutLongField( f2, i );

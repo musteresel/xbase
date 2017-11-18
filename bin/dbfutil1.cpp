@@ -949,7 +949,6 @@ void MyClass::DebugMenu()
 
 void MyClass::LockDbf()
 {
-  xbShort rc;
   std::cout << "Locking table" << std::endl;
 //  rc = d.LockTable( XB_LOCK );
 //  x.DisplayError( rc );
@@ -959,7 +958,6 @@ void MyClass::LockDbf()
 
 void MyClass::UnlockDbf()
 {
-  xbShort rc;
   std::cout << "Unlocking table" << std::endl;
 //  rc = d.LockTable( XB_UNLOCK );
 //  x.DisplayError( rc );
@@ -971,7 +969,6 @@ void MyClass::UnlockDbf()
 
 void MyClass::LockRecord()
 {
-  xbShort rc;
   xbULong RecNo;
   xbULong RecCnt;
   
@@ -988,7 +985,6 @@ void MyClass::LockRecord()
 /************************************************************************/
 void MyClass::UnlockRecord()
 {
-  xbShort rc;
   xbULong RecNo;
   xbULong RecCnt;  
   std::cout << "Enter start record number to unlock" << std::endl;
@@ -1122,7 +1118,6 @@ void MyClass::SetRetryCount()
 
 void MyClass::LockMemoFile( xbShort LockType )
 {
-  xbShort rc;
 //  rc = d.LockMemoFile( LockType );
 //  x.DisplayError( rc );
   std::cout << "no memo locking here" << std::endl;
@@ -1134,8 +1129,6 @@ void MyClass::LockMemoFile( xbShort LockType )
 
 void MyClass::LockIndexFile( xbShort LockType )
 {
-  xbShort rc;
-  
   if( ix ){
 //    rc = ix->LockIndex( LockType );
 //    x.DisplayError( rc );
