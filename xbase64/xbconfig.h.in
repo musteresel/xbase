@@ -1,0 +1,69 @@
+#cmakedefine HAVE_IO_H @HAVE_IO_H@
+#cmakedefine HAVE_DOS_H @HAVE_DOS_H@
+#cmakedefine HAVE_DLFCN_H @HAVE_DLFCN_H@
+#cmakedefine HAVE_FCNTL_H @HAVE_FCNTL_H@
+#cmakedefine HAVE_INTTYPES_H @HAVE_INTTYPES_H@
+#cmakedefine HAVE_MEMORY_H @HAVE_MEMORY_H@
+#cmakedefine HAVE_STDINT_H @HAVE_STDINT_H@
+#cmakedefine HAVE_STDLIB_H @HAVE_STDLIB_H@
+#cmakedefine HAVE_STDDEF_H @HAVE_STDDEF_H@
+#cmakedefine HAVE_STRINGS_H @HAVE_STRINGS_H@
+#cmakedefine HAVE_STRING_H @HAVE_STRING_H@
+#cmakedefine HAVE_SYS_STAT_H @HAVE_SYS_STAT_H@
+#cmakedefine HAVE_SYS_TYPES_H @HAVE_SYS_TYPES_H@
+#cmakedefine HAVE_UNISTD_H @HAVE_UNISTD_H@
+
+#cmakedefine HAVE_FSEEKO @HAVE_FSEEKO@
+#cmakedefine HAVE_FTELLO @HAVE_FTELLO@
+#cmakedefine HAVE_VSPRINTF @HAVE_VSPRINTF@
+#cmakedefine HAVE_VSNPRINTF @HAVE_VSNPRINTF@
+#cmakedefine HAVE_STRCASECMP @HAVE_STRCASECMP@
+
+#define _FILE_OFFSET_BITS 64
+#define _ALL_SOURCE 1
+#define _GNU_SOURCE 1
+#define _TANDEM_SOURCE 1
+#define _POSIX_PTHREAD_SEMANTICS 1
+
+#define XB_DBT_BLOCK_SIZE 512
+
+#define PACKAGE "@XBASE_PACKAGE@"
+#define VERSION "@XBASE_VERSION@"
+#define PACKAGE_NAME PACKAGE
+#define PACKAGE_TARNAME PACKAGE
+#define PACKAGE_VERSION VERSION
+
+#define PACKAGE_BUGREPORT "@XBASE_BUGREPO@"
+#define PACKAGE_STRING "@XBASE_PACKAGE@ @XBASE_VERSION@"
+
+#if defined(_WIN32)
+#define PATH_SEPARATOR '\\'
+#else
+#define PATH_SEPARATOR '/'
+#endif
+
+#if defined(HAVE_STDLIB_H) && defined(HAVE_STDDEF_H)
+#define STDC_HEADERS 1
+#else
+#undef STDC_HEADERS
+#endif
+
+#cmakedefine XBASE_DEBUG
+#cmakedefine XB_EXPRESSIONS
+#cmakedefine XB_FILTERS
+#cmakedefine XB_INDEX_ANY
+#cmakedefine XB_INDEX_NDX
+#cmakedefine XB_INDEX_NTX
+#cmakedefine XB_LARGEFILE_SUPPORT
+#cmakedefine XB_LOCKING_ON
+#cmakedefine XB_MEMO_FIELDS
+#cmakedefine XB_REAL_DELETE
+
+#if defined(XB_INDEX_NDX) || defined(XB_INDEX_NTX)
+#if !defined(XB_EXPRESSIONS)
+#define XB_EXPRESSIONS
+#endif
+#if !defined(XB_INDEX_ANY)
+#define XB_INDEX_ANY
+#endif
+#endif

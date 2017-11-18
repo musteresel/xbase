@@ -1,3 +1,7 @@
+2017-11-18 Gray Wolf <wolf@wolfsden.cz>
+
+	* switched to CMake based build from GNU Autotools
+
 2003-09-15 Gary Kunkel <gkunkel@zhsac.com>
 
       * branched xbase off of current tree and renamed to xbase64

@@ -1,12 +1,3 @@
 *.swp
-*.o
-*.lo
-*.la
-Makefile
 
-/autom4te.cache
-/config.log
-/config.status
-/libtool
-/xbase64-config
-/xbase64.spec
+/build
