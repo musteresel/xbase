@@ -310,11 +310,11 @@ xbShort xbaseLock::UnlockAll()
 /************************************************************************/
 xbShort xbaseLock::LockInit()
 {
-  xbShort  len;
   xbString lfn;
 
   lfn = dbf->GetDbfName();
-  lfn.resize( lfn.len() - 3 );
+  auto len = lfn.len();
+  lfn.resize( (len >= 3 ? len : 3) - 3 );
 
   lfn += ".lck";
 
