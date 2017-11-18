@@ -94,7 +94,11 @@ install(
 )
 
 install(
-	DIRECTORY .
-	DESTINATION usr/include/xbase64
+	DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+	DESTINATION usr/include
 	FILES_MATCHING PATTERN "*.h"
+)
+install(
+	FILES ${CMAKE_CURRENT_BINARY_DIR}/xbase64/xbconfig.h
+	DESTINATION usr/include/xbase64
 )
