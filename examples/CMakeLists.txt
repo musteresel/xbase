@@ -10,5 +10,5 @@ set(
 )
 foreach(EXAMPLE ${EXAMPLES})
 	add_executable(${EXAMPLE} ${EXAMPLE}.cpp)
-	target_link_libraries(${EXAMPLE} xbase64_shared)
+	target_link_libraries(${EXAMPLE} xbase64_static)
 endforeach()
