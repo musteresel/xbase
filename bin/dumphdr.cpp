@@ -3,7 +3,7 @@
 
     Xbase64 project source code
 
-    Copyright (C) 1997,2003  Gary A. Kunkel   
+    Copyright (C) 1997,2003  Gary A. Kunkel
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,49 +21,47 @@
 
 
     Contact:
-    
+
      Email:
-    
+
       xbase64-devel@lists.sourceforge.net
       xbase64-users@lists.sourceforge.net
-      
-      
+
+
      Regular Mail:
-     
+
        XBase Support
        149C South Main St
-       Keller Texas, 76248     
+       Keller Texas, 76248
        USA
 
 */
 
 #include <xbase64/xbase64.h>
 
-int main( int ac, char ** av )
-{
+int main(int ac, char ** av) {
 #ifdef XBASE_DEBUG
-  xbShort rc;
-  xbXBase x;
+	xbShort rc;
+	xbXBase x;
 
-  if( ac <= 1 ) {
-    std::cout << "\nUsage: dumphdr filename...\n";
-    return 1;
-  }
-  for( int i = 1; i < ac; ++i ){
-    char * filename = av[i];
-    xbDbf MyFile( &x );
- 
-    if(( rc =  MyFile.OpenDatabase( filename )) != 0 )
-    {
-     std::cout << "Could not open file rc = " << rc  << " file = "
-               << filename << "\n";
-     return 0;
-    }
-    MyFile.DumpHeader( 3 );
-    MyFile.CloseDatabase();
-  }
+	if (ac <= 1) {
+		std::cout << "\nUsage: dumphdr filename...\n";
+		return 1;
+	}
+	for (int i = 1; i < ac; ++i) {
+		char * filename = av[i];
+		xbDbf MyFile(&x);
+
+		if ((rc = MyFile.OpenDatabase(filename)) != 0) {
+			std::cout << "Could not open file rc = " << rc
+			          << " file = " << filename << "\n";
+			return 0;
+		}
+		MyFile.DumpHeader(3);
+		MyFile.CloseDatabase();
+	}
 #else
-  std::cout << "\nXBASE_DEBUG is not compiled in\n";
+	std::cout << "\nXBASE_DEBUG is not compiled in\n";
 #endif
-  return 0;
-}     
+	return 0;
+}

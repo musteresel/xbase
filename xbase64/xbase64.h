@@ -1,4 +1,4 @@
-/*  xbase64.h  
+/*  xbase64.h
 
     Xbase project source code
 
@@ -6,7 +6,7 @@
     base class for using the Xbase DBMS library.
 
     Copyright (C) 1997,2003  Gary A Kunkel
-    
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
@@ -23,18 +23,18 @@
 
 
     Contact:
-    
+
      Email:
-    
+
       xdb-devel@lists.sourceforge.net
       xdb-users@lists.sourceforge.net
-      
-      
+
+
      Regular Mail:
-     
+
        XBase Support
        149C South Main St
-       Keller Texas, 76248     
+       Keller Texas, 76248
        USA
 
 */
@@ -61,70 +61,69 @@
 
 // _declspec works in BC++ 5 and later, as well as VC++
 #if defined(__VISUALC__) || defined(__BORLANDC__) || defined(__GNU_LesserC__)
-#  ifdef XBMAKINGDLL
-#    define XBDLLEXPORT __declspec( dllexport )
-#    define XBDLLEXPORT_DATA(type) __declspec( dllexport ) type
-#    define XBDLLEXPORT_CTORFN
-#  elif defined(XBUSINGDLL)
-#    define XBDLLEXPORT __declspec( dllimport )
-#    define XBDLLEXPORT_DATA(type) __declspec( dllimport ) type
-#    define XBDLLEXPORT_CTORFN
-#  else
-#    define XBDLLEXPORT
-#    define XBDLLEXPORT_DATA(type) type
-#    define XBDLLEXPORT_CTORFN
-#  endif
+#ifdef XBMAKINGDLL
+#define XBDLLEXPORT __declspec(dllexport)
+#define XBDLLEXPORT_DATA(type) __declspec(dllexport) type
+#define XBDLLEXPORT_CTORFN
+#elif defined(XBUSINGDLL)
+#define XBDLLEXPORT __declspec(dllimport)
+#define XBDLLEXPORT_DATA(type) __declspec(dllimport) type
+#define XBDLLEXPORT_CTORFN
+#else
+#define XBDLLEXPORT
+#define XBDLLEXPORT_DATA(type) type
+#define XBDLLEXPORT_CTORFN
+#endif
 
 #else
 
-#  define XBDLLEXPORT
-#  define XBDLLEXPORT_DATA(type) type
-#  define XBDLLEXPORT_CTORFN
+#define XBDLLEXPORT
+#define XBDLLEXPORT_DATA(type) type
+#define XBDLLEXPORT_CTORFN
 #endif
 
-#else // !Windows
-#  define XBDLLEXPORT
-#  define XBDLLEXPORT_DATA(type) type
-#  define XBDLLEXPORT_CTORFN
-#endif // Win/!Win
-
+#else  // !Windows
+#define XBDLLEXPORT
+#define XBDLLEXPORT_DATA(type) type
+#define XBDLLEXPORT_CTORFN
+#endif  // Win/!Win
 
 #define XB_SINGLE_USER_MODE 0
-#define XB_UNLOCK           200
-#define XB_LOCK             201
-#define XB_LOCK_HOLD        202
+#define XB_UNLOCK 200
+#define XB_LOCK 201
+#define XB_LOCK_HOLD 202
 
 #ifdef XB_LOCKING_ON
 
- #ifdef HAVE_SYS_LOCKING_H
-  #include <sys/locking.h>
-  #ifdef __MINGW32__
-    #defibe locking _locking
-  #endif
- #endif
+#ifdef HAVE_SYS_LOCKING_H
+#include <sys/locking.h>
+#ifdef __MINGW32__
+#defibe locking _locking
+#endif
+#endif
 
- #ifdef HAVE_FCNTL_H
-  #include <fcntl.h>
- #endif
+#ifdef HAVE_FCNTL_H
+#include <fcntl.h>
+#endif
 
- #ifdef HAVE_UNISTD_H
-  #include <unistd.h>
- #endif
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 
- #define XB_XBASE_LOCK_MODE     200
- #define XB_DBASE5_LOCK_MODE    201
- #define XB_CLIPPER5_LOCK_MODE  202
- #define XB_FOXPRO3_LOCK_MODE   203
+#define XB_XBASE_LOCK_MODE 200
+#define XB_DBASE5_LOCK_MODE 201
+#define XB_CLIPPER5_LOCK_MODE 202
+#define XB_FOXPRO3_LOCK_MODE 203
 
-#endif          // XB_LOCKING_ON
+#endif  // XB_LOCKING_ON
 
-#include "xbtypes.h"
-#include "xbretcod.h"
 #include "xbdate.h"
+#include "xbretcod.h"
 #include "xbstring.h"
+#include "xbtypes.h"
 
 #ifndef XB_MIN
-#define XB_MIN(a, b)	(((a) < (b)) ? (a) : (b))
+#define XB_MIN(a, b) (((a) < (b)) ? (a) : (b))
 #endif /* XB_MIN */
 
 // 3/18/04 next macro isn't currently used in the library - GK
@@ -133,70 +132,70 @@
 //#endif /* XB_MAX */
 
 /*! \file xbase64.h
-*/
+ */
 
 class XBDLLEXPORT xbDbf;
 
 //! xbDbList struct
 /*!
-*/
-struct XBDLLEXPORT xbDbList{
-  xbDbList * NextDbf;
-  char * DbfName;
-  xbDbf  * dbf;
+ */
+struct XBDLLEXPORT xbDbList {
+	xbDbList * NextDbf;
+	char * DbfName;
+	xbDbf * dbf;
 };
 
 //! xbXBase class
 /*!
-*/
+ */
 class XBDLLEXPORT xbXBase {
- public:
-  ~xbXBase();
-  xbXBase();
-  xbShort  AddDbfToDbfList(xbDbf *d, const char *DatabaseName);
-  xbDbf *  GetDbfPtr( const char *Name );
-  xbShort  DirectoryExistsInName( const char *Name );
-  xbShort  GetEndianType() { return EndianType; }
-  void     DisplayError( xbShort ErrorCode ) const;
-  static const char* GetErrorMessage( xbShort ErrorCode );
-  xbString & GetDefaultDateFormat() { return DefaultDateFormat; }
-  void     SetDefaultDateFormat( const xbString & f ){ DefaultDateFormat = f; }
+public:
+	~xbXBase();
+	xbXBase();
+	xbShort AddDbfToDbfList(xbDbf * d, const char * DatabaseName);
+	xbDbf * GetDbfPtr(const char * Name);
+	xbShort DirectoryExistsInName(const char * Name);
+	xbShort GetEndianType() { return EndianType; }
+	void DisplayError(xbShort ErrorCode) const;
+	static const char * GetErrorMessage(xbShort ErrorCode);
+	xbString & GetDefaultDateFormat() { return DefaultDateFormat; }
+	void SetDefaultDateFormat(const xbString & f) { DefaultDateFormat = f; }
 
-  /* next 6 routines handle both big endian and little endian machines */
-  xbDouble GetDouble( const char *p );
-  xbLong   GetLong  ( const char *p );
-  xbULong  GetULong ( const char *p );
-  xbShort  GetShort ( const char *p );
-  xbULong GetHBFULong( const char *p );
-  xbShort GetHBFShort ( const char *p );
+	/* next 6 routines handle both big endian and little endian machines */
+	xbDouble GetDouble(const char * p);
+	xbLong GetLong(const char * p);
+	xbULong GetULong(const char * p);
+	xbShort GetShort(const char * p);
+	xbULong GetHBFULong(const char * p);
+	xbShort GetHBFShort(const char * p);
 
-  void   PutLong  ( char *p, const xbLong   l );
-  void   PutShort ( char *p, const xbShort  s );
-  void   PutULong ( char *p, const xbULong  l );
-  void   PutUShort( char *p, const xbUShort s );
-  void   PutDouble( char *p, const xbDouble d );
+	void PutLong(char * p, const xbLong l);
+	void PutShort(char * p, const xbShort s);
+	void PutULong(char * p, const xbULong l);
+	void PutUShort(char * p, const xbUShort s);
+	void PutDouble(char * p, const xbDouble d);
 
-  xbShort  RemoveDbfFromDbfList( xbDbf * );
+	xbShort RemoveDbfFromDbfList(xbDbf *);
 
 #ifdef XB_LOCKING_ON
-  xbShort  GetLockRetryCount(){ return LockRetryCount; }
-  void     SetLockRetryCount( xbShort lrc ) { LockRetryCount = lrc; }
-  xbShort  LockFile( int fn, xbShort type, xbOffT len );
-  xbShort  GetLockMode() { return LockMode; }
-  xbShort  SetLockMode( xbShort nlm );
+	xbShort GetLockRetryCount() { return LockRetryCount; }
+	void SetLockRetryCount(xbShort lrc) { LockRetryCount = lrc; }
+	xbShort LockFile(int fn, xbShort type, xbOffT len);
+	xbShort GetLockMode() { return LockMode; }
+	xbShort SetLockMode(xbShort nlm);
 #endif
 
 protected:
-  xbDbList * DbfList;
-  xbDbList * FreeDbfList;
-  xbShort    EndianType;          /* B = Big Endian, L = Little Endian */
+	xbDbList * DbfList;
+	xbDbList * FreeDbfList;
+	xbShort EndianType; /* B = Big Endian, L = Little Endian */
 
 private:
-  xbString DefaultDateFormat;
-  
+	xbString DefaultDateFormat;
+
 #ifdef XB_LOCKING_ON
-  xbShort LockRetryCount;
-  xbShort LockMode;
+	xbShort LockRetryCount;
+	xbShort LockMode;
 #endif
 };
 
@@ -233,7 +232,4 @@ private:
 #include "xbfilter.h"
 #endif
 
-#endif		// __XB_XBASE_H__
-
-
-
+#endif  // __XB_XBASE_H__

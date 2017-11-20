@@ -28,7 +28,7 @@
 #define XB_EXPRESSIONS 1
 
 /* Define if you need locking support */
-#undef XB_LOCKING_ON 
+#undef XB_LOCKING_ON
 
 /* Define if you need to turn on XBase specific debug */
 #define XBASE_DEBUG 1
@@ -59,7 +59,7 @@
 
 /* Should we include generic index support? */
 #if defined(XB_INDEX_NDX) || defined(XB_INDEX_NTX)
-#define  XB_INDEX_ANY 1
+#define XB_INDEX_ANY 1
 #endif
 
 /* expressions required for indexes */
@@ -68,15 +68,14 @@
 #endif
 
 /* default memo block size */
-#define XB_DBT_BLOCK_SIZE  512
+#define XB_DBT_BLOCK_SIZE 512
 
 /* filename path separator */
 #define PATH_SEPARATOR '/'
 
 /* MS uses WIN32, Borland uses __WIN32__ */
 #ifdef WIN32
- #ifndef __WIN32__
-  #define __WIN32__
- #endif 
+#ifndef __WIN32__
+#define __WIN32__
 #endif
-
+#endif

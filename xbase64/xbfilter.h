@@ -1,12 +1,12 @@
 /*  xbfilter.h
 
     Xbase project source code
-  
+
     This file conatains a header file for the xbFilter object which
     is used for filtering data.
 
     Copyright (C) 1997,2003  Gary A Kunkel
-    
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
@@ -23,23 +23,23 @@
 
 
     Contact:
-    
+
      Email:
-    
+
       xdb-devel@lists.sourceforge.net
       xdb-users@lists.sourceforge.net
-      
-      
+
+
      Regular Mail:
-     
+
        XBase Support
        149C South Main St
-       Keller Texas, 76248     
+       Keller Texas, 76248
        USA
 */
 
 /*! \file xbfilter.h
-*/
+ */
 
 #ifndef __XB_FILTER_H__
 #define __XB_FILTER_H__
@@ -50,26 +50,25 @@
 
 //! xbFilter class
 /*!
-*/
+ */
 
-class XBDLLEXPORT xbFilter
-{
+class XBDLLEXPORT xbFilter {
 public:
-  xbFilter( xbDbf * dbf, xbIndex * index, const char * expression );
-  virtual ~xbFilter();
+	xbFilter(xbDbf * dbf, xbIndex * index, const char * expression);
+	virtual ~xbFilter();
 
-  xbShort GetFirstFilterRec();
-  xbShort GetLastFilterRec();
-  xbShort GetNextFilterRec();
-  xbShort GetPrevFilterRec();
-  xbShort GetStatus() { return Status; }
+	xbShort GetFirstFilterRec();
+	xbShort GetLastFilterRec();
+	xbShort GetNextFilterRec();
+	xbShort GetPrevFilterRec();
+	xbShort GetStatus() { return Status; }
 
 protected:
-  xbULong CurFilterRecNo;
-  xbShort Status;
-  xbExpn * flExpn;
-  xbDbf *d;
-  xbIndex *i;
+	xbULong CurFilterRecNo;
+	xbShort Status;
+	xbExpn * flExpn;
+	xbDbf * d;
+	xbIndex * i;
 };
 
 #endif

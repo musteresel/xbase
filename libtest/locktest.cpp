@@ -1,8 +1,8 @@
-/*  
+/*
     This debugging program tests Xbase locking functions
 
     Copyright (C) 1997,2003  Gary A Kunkel
-    
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
@@ -19,18 +19,18 @@
 
 
     Contact:
-    
+
      Email:
-    
+
       xbase64-devel@lists.sourceforge.net
       xbase64-users@lists.sourceforge.net
-      
-      
+
+
      Regular Mail:
-     
+
        XBase Support
        149C South Main St
-       Keller Texas, 76248     
+       Keller Texas, 76248
        USA
 
 
@@ -38,9 +38,8 @@
 
 #include <xbase64/xbase64.h>
 
-int main(int, char**)
-{
-#if 0 // FIXME - seriously
+int main(int, char **) {
+#if 0  // FIXME - seriously
 #ifdef XB_LOCKING_ON
    xbShort rc;
 
@@ -73,5 +72,5 @@ int main(int, char**)
    cout << "\nXB_LOCKING_ON is not compiled in\n";
 #endif
 #endif
-   return 0;
+	return 0;
 }

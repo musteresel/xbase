@@ -1,0 +1,32 @@
+BasedOnStyle: Chromium
+
+AccessModifierOffset: -4
+AlwaysBreakAfterReturnType: None
+BinPackArguments: false
+BraceWrapping:
+  AfterClass:      false
+  AfterControlStatement: false
+  AfterEnum:       false
+  AfterFunction:   false
+  AfterNamespace:  false
+  AfterObjCDeclaration: false
+  AfterStruct:     false
+  AfterUnion:      false
+  BeforeCatch:     false
+  BeforeElse:      false
+  IndentBraces:    false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+BreakConstructorInitializers: BeforeComma
+ColumnLimit:     80
+CommentPragmas:  '^ IWYU pragma:'
+CompactNamespaces: true
+IndentCaseLabels: false
+IndentWidth:     4
+NamespaceIndentation: All
+PointerAlignment: Middle
+SpacesBeforeTrailingComments: 2
+Standard:        Cpp11
+TabWidth:        4
+UseTab:          ForIndentation
