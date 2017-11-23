@@ -12,3 +12,13 @@ foreach(LIBTEST ${LIBTESTS})
 	target_link_libraries(${LIBTEST}_shared xbase64_shared)
 	target_link_libraries(${LIBTEST}_static xbase64_static)
 endforeach()
+
+add_executable(
+	tests
+		tests.cpp
+)
+target_link_libraries(
+	tests
+		gtest
+		xbase64_static
+)

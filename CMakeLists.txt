@@ -17,6 +17,6 @@ add_subdirectory(3rd_party/googletest)
 add_subdirectory(xbase64)
 add_subdirectory(examples)
 add_subdirectory(bin)
-add_subdirectory(libtest)
+add_subdirectory(test)
 
 add_subdirectory(docs)
