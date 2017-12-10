@@ -117,7 +117,17 @@ xbShort xbExpn::ProcessFunction(char * Func) {
 		DoubResult = EXP(GetDoub(p1));
 	} else if (strncmp(Func, "IIF", 3) == 0) {
 		ptype = 's';
-		buf = IIF(p1->IntResult, p2->StringResult, p3->StringResult);
+
+		xbExpn subexp(xbase);
+		xbShort rc;
+		if ((rc = subexp.ParseExpression(p1->StringResult, xdbf)) != 0) {
+			return rc;
+		}
+		if ((rc = subexp.ProcessExpression()) != 0) {
+			return rc;
+		}
+
+		buf = IIF(subexp.GetIntResult(), p2->StringResult, p3->StringResult);
 	} else if (strncmp(Func, "INT", 3) == 0) {
 		ptype = 'd';
 		DoubResult = INT(GetDoub(p1));

@@ -213,6 +213,7 @@ protected:
 
 private:
 	xbXBase * xbase;
+	xbDbf * xdbf;
 	xbFuncDtl * XbaseFuncList; /* pointer to list of Xbase functions    */
 	xbExpNode * Tree;          /* pointer to tree of parsed nodes       */
 	xbShort LogicalType;       /* set to 1 for logical type nodes       */

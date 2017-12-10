@@ -600,6 +600,8 @@ xbShort xbExpn::BuildExpressionTree(const char * Expression,
 	xbDbf * TempDbf = 0;
 	int LocTokenLen;
 
+	xdbf = d;
+
 	if (Tree) {
 		delete Tree;
 		Tree = NULL;
