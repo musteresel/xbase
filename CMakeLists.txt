@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.9.5)
 project(xbase64)
 
 set(XBASE_PACKAGE "xbase64")
-set(XBASE_VERSION "3.3.1")
+set(XBASE_VERSION "3.3.2")
 set(XBASE_BUGREPO "wolf+xbase@wolfsden.cz")
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

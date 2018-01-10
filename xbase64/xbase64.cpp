@@ -26,6 +26,8 @@
 #include <dos.h>
 #endif
 
+#include <algorithm>
+
 /*! \file xbase64.cpp
  */
 
@@ -215,22 +217,11 @@ xbShort xbXBase::RemoveDbfFromDbfList(xbDbf * d) {
 */
 /* This routine returns a short value from a 2 byte character stream */
 xbShort xbXBase::GetShort(const char * p) {
-	xbShort s, i;
-	const char * sp;
-	char * tp;
-
-	s = 0;
-	tp = (char *)&s;
-	sp = p;
-	if (EndianType == 'L')
-		for (i = 0; i < 2; i++)
-			*tp++ = *sp++;
-	else {
-		sp++;
-		for (i = 0; i < 2; i++)
-			*tp++ = *sp--;
+	if (EndianType == 'L') {
+		return static_cast<int16_t>((p[1] << 8) | p[0]);
+	} else {
+		return static_cast<int16_t>((p[0] << 8) | p[1]);
 	}
-	return s;
 }
 /*************************************************************************/
 //! Get a portable long value.
@@ -244,22 +235,21 @@ xbShort xbXBase::GetShort(const char * p) {
 */
 /* This routine returns a long value from a 4 byte character stream */
 xbLong xbXBase::GetLong(const char * p) {
-	xbLong l;
-	const char * sp;
-	char * tp;
-	xbShort i;
-
-	tp = (char *)&l;
-	sp = p;
-	if (EndianType == 'L')
-		for (i = 0; i < 4; i++)
-			*tp++ = *sp++;
-	else {
-		sp += 3;
-		for (i = 0; i < 4; i++)
-			*tp++ = *sp--;
+	if (EndianType == 'L') {
+		return static_cast<int32_t>(
+			  (p[3] << 24)
+			| (p[2] << 16)
+			| (p[1] << 8)
+			|  p[0]
+		);
+	} else {
+		return static_cast<int32_t>(
+			  (p[0] << 24)
+			| (p[1] << 16)
+			| (p[2] << 8)
+			|  p[3]
+		);
 	}
-	return l;
 }
 /*************************************************************************/
 //! Get a portable unsigned long value.
@@ -273,20 +263,7 @@ xbLong xbXBase::GetLong(const char * p) {
 */
 /* This routine returns a long value from a 4 byte character stream */
 xbULong xbXBase::GetULong(const char * p) {
-	xbULong l;
-	char * tp;
-	xbShort i;
-
-	tp = (char *)&l;
-	if (EndianType == 'L')
-		for (i = 0; i < 4; i++)
-			*tp++ = *p++;
-	else {
-		p += 3;
-		for (i = 0; i < 4; i++)
-			*tp++ = *p--;
-	}
-	return l;
+	return GetLong(p);
 }
 
 /************************************************************************/
@@ -301,22 +278,7 @@ xbULong xbXBase::GetULong(const char * p) {
 */
 /* This routine returns a short value from a 2 byte character stream */
 xbShort xbXBase::GetHBFShort(const char * p) {
-	xbShort s, i;
-	const char * sp;
-	char * tp;
-
-	s = 0;
-	tp = (char *)&s;
-	sp = p;
-	if (EndianType == 'B')
-		for (i = 0; i < 2; i++)
-			*tp++ = *sp++;
-	else {
-		sp++;
-		for (i = 0; i < 2; i++)
-			*tp++ = *sp--;
-	}
-	return s;
+	return static_cast<int16_t>((p[0] << 8) | p[1]);
 }
 
 /*************************************************************************/
@@ -331,20 +293,12 @@ xbShort xbXBase::GetHBFShort(const char * p) {
 */
 /* This routine returns a long value from a 4 byte character stream */
 xbULong xbXBase::GetHBFULong(const char * p) {
-	xbULong l;
-	char * tp;
-	xbShort i;
-
-	tp = (char *)&l;
-	if (EndianType == 'B')
-		for (i = 0; i < 4; i++)
-			*tp++ = *p++;
-	else {
-		p += 3;
-		for (i = 0; i < 4; i++)
-			*tp++ = *p--;
-	}
-	return l;
+	return static_cast<int32_t>(
+		  (p[0] << 24)
+		| (p[1] << 16)
+		| (p[2] << 8)
+		|  p[3]
+	);
 }
 /*************************************************************************/
 //! Get a portable double value.
@@ -358,23 +312,15 @@ xbULong xbXBase::GetHBFULong(const char * p) {
 */
 /* This routine returns a double value from an 8 byte character stream */
 xbDouble xbXBase::GetDouble(const char * p) {
-	xbDouble d;
-	const char * sp;
-	char * tp;
-	xbShort i;
+	char copy[8];
 
-	tp = (char *)&d;
-	sp = p;
-	if (EndianType == 'L')
-		for (i = 0; i < 8; i++)
-			*tp++ = *sp++;
-	else {
-		sp += 7;
-		for (i = 0; i < 8; i++)
-			*tp++ = *sp--;
+	if (EndianType == 'L') {
+		std::reverse_copy(p, p + 8, copy);
+	} else {
+		std::copy(p, p + 8, copy);
 	}
 
-	return d;
+	return *reinterpret_cast<double *>(copy);
 }
 /*************************************************************************/
 //! Put a portable short value.
@@ -388,23 +334,8 @@ xbDouble xbXBase::GetDouble(const char * p) {
 */
 /* This routine puts a short value to a 2 byte character stream */
 void xbXBase::PutShort(char * c, xbShort s) {
-	const char * sp;
-	char * tp;
-	xbShort i;
-
-	tp = c;
-	sp = (const char *)&s;
-
-	if (EndianType == 'L') {
-		for (i = 0; i < 2; i++)
-			*tp++ = *sp++;
-	} else /* big endian */
-	{
-		sp++;
-		for (i = 0; i < 2; i++)
-			*tp++ = *sp--;
-	}
-	return;
+	c[0] = s & 0xff;
+	c[1] = s & (0xff << 8);
 }
 
 /*************************************************************************/
@@ -419,21 +350,10 @@ void xbXBase::PutShort(char * c, xbShort s) {
 */
 /* This routine puts a long value to a 4 byte character stream */
 void xbXBase::PutLong(char * c, xbLong l) {
-	const char * sp;
-	char * tp;
-	xbShort i;
-
-	tp = c;
-	sp = (const char *)&l;
-	if (EndianType == 'L')
-		for (i = 0; i < 4; i++)
-			*tp++ = *sp++;
-	else {
-		sp += 3;
-		for (i = 0; i < 4; i++)
-			*tp++ = *sp--;
-	}
-	return;
+	c[0] = l & 0xff;
+	c[1] = l & (0xff << 8);
+	c[2] = l & (0xff << 16);
+	c[3] = l & (0xff << 24);
 }
 /*************************************************************************/
 //! Put a portable unsigned short value.
@@ -447,21 +367,7 @@ void xbXBase::PutLong(char * c, xbLong l) {
 */
 /* This routine puts a short value to a 2 byte character stream */
 void xbXBase::PutUShort(char * c, xbUShort s) {
-	const char * sp;
-	char * tp;
-	xbShort i;
-
-	tp = c;
-	sp = (const char *)&s;
-	if (EndianType == 'L')
-		for (i = 0; i < 2; i++)
-			*tp++ = *sp++;
-	else {
-		sp++;
-		for (i = 0; i < 2; i++)
-			*tp++ = *sp--;
-	}
-	return;
+	PutShort(c, s);
 }
 /*************************************************************************/
 //! Put a portable unsigned long value.
@@ -475,21 +381,7 @@ void xbXBase::PutUShort(char * c, xbUShort s) {
 */
 /* This routine puts a long value to a 4 byte character stream */
 void xbXBase::PutULong(char * c, xbULong l) {
-	const char * sp;
-	char * tp;
-	xbShort i;
-
-	tp = c;
-	sp = (const char *)&l;
-	if (EndianType == 'L')
-		for (i = 0; i < 4; i++)
-			*tp++ = *sp++;
-	else {
-		sp += 3;
-		for (i = 0; i < 4; i++)
-			*tp++ = *sp--;
-	}
-	return;
+	PutLong(c, l);
 }
 /*************************************************************************/
 //! Put a portable double value.
@@ -503,21 +395,11 @@ void xbXBase::PutULong(char * c, xbULong l) {
 */
 /* This routine puts a double value to an 8 byte character stream */
 void xbXBase::PutDouble(char * c, xbDouble d) {
-	const char * sp;
-	char * tp;
-	xbShort i;
-
-	tp = c;
-	sp = (const char *)&d;
-	if (EndianType == 'L')
-		for (i = 0; i < 8; i++)
-			*tp++ = *sp++;
-	else {
-		sp += 7;
-		for (i = 0; i < 8; i++)
-			*tp++ = *sp--;
-	}
-	return;
+	std::copy(
+		reinterpret_cast<const unsigned char *>(&d),
+		reinterpret_cast<const unsigned char *>(&d) + sizeof(double),
+		c
+	);
 }
 /************************************************************************/
 //! Get offset of last PATH_SEPARATOR in Name.
