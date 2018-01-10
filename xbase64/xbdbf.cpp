@@ -2124,7 +2124,7 @@ xbShort xbDbf::PackDatafiles(void (*statusFunc)(xbLong itemNum,
       \end{tabular}
     \endlatexonly
 */
-xbShort xbDbf::PackDatabase(xbShort LockWaitOption,
+xbShort xbDbf::PackDatabase(xbShort /*LockWaitOption*/,
                             void (*packStatusFunc)(xbLong itemNum,
                                                    xbLong numItems),
                             void (*indexStatusFunc)(xbLong itemNum,
@@ -2381,7 +2381,7 @@ xbShort xbDbf::DeleteAll(xbShort Option) {
 //! Delete all records and pack data file
 /*!
  */
-xbShort xbDbf::Zap(xbShort WaitOption) {
+xbShort xbDbf::Zap(xbShort /*WaitOption*/) {
 	xbShort rc;
 	xbString TempDbfName, TempDbtName;
 

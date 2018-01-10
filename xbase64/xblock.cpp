@@ -394,7 +394,7 @@ clipperLock::clipperLock(xbDbf * pdbf) : xbLock(pdbf) {
 	std::cout << "clipperLock constructor" << std::endl;
 }
 /*************************************************************************/
-xbShort clipperLock::LockTableHeader(xbShort LockType) {
+xbShort clipperLock::LockTableHeader(xbShort /*LockType*/) {
 	return XB_INVALID_LOCK_OPTION;
 }
 /*************************************************************************/
@@ -433,11 +433,11 @@ xbShort clipperLock::LockRecord(xbShort LockType,
 	return LockFile(dbf->GetDbfFileNo(), LockType, RecCnt);
 }
 /*************************************************************************/
-xbShort clipperLock::LockMemo(xbShort LockType) {
+xbShort clipperLock::LockMemo(xbShort /*LockType*/) {
 	return XB_NO_ERROR;
 }
 /*************************************************************************/
-xbShort clipperLock::LockIndex(xbShort LockType) {
+xbShort clipperLock::LockIndex(xbShort /*LockType*/) {
 	return XB_INVALID_LOCK_OPTION;
 }
 /*************************************************************************/
@@ -450,7 +450,7 @@ foxproLock::foxproLock(xbDbf * pdbf) : xbLock(pdbf) {
 	std::cout << "foxproLock constructor" << std::endl;
 }
 /*************************************************************************/
-xbShort foxproLock::LockTableHeader(xbShort LockType) {
+xbShort foxproLock::LockTableHeader(xbShort /*LockType*/) {
 	return XB_INVALID_LOCK_OPTION;
 }
 /*************************************************************************/
@@ -474,15 +474,15 @@ xbShort foxproLock::LockTable(xbShort LockType) {
 	return XB_NO_ERROR;
 }
 /*************************************************************************/
-xbShort foxproLock::LockRecord(xbShort LockType, xbULong RecNo, xbOffT len) {
+xbShort foxproLock::LockRecord(xbShort /*LockType*/, xbULong /*RecNo*/, xbOffT /*len*/) {
 	return XB_INVALID_LOCK_OPTION;
 }
 /*************************************************************************/
-xbShort foxproLock::LockMemo(xbShort LockType) {
+xbShort foxproLock::LockMemo(xbShort /*LockType*/) {
 	return XB_INVALID_LOCK_OPTION;
 }
 /*************************************************************************/
-xbShort foxproLock::LockIndex(xbShort LockType) {
+xbShort foxproLock::LockIndex(xbShort /*LockType*/) {
 	return XB_INVALID_LOCK_OPTION;
 }
 /*************************************************************************/

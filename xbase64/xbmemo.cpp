@@ -468,7 +468,7 @@ xbShort xbDbf::WriteMemoBlock(xbLong BlockNo, xbShort Option) {
 xbShort xbDbf::GetFPTField(xbShort FieldNo,
                            xbLong len,
                            char * Buf,
-                           xbShort LockOpt) {
+                           xbShort /*LockOpt*/) {
 	if (FieldNo < 0 || FieldNo > (NoOfFields - 1))
 		return XB_INVALID_FIELDNO;
 
@@ -953,7 +953,7 @@ xbShort xbDbf::PutMemoData(xbLong StartBlock,
 xbShort xbDbf::UpdateMemoData(xbShort FieldNo,
                               xbLong DataLen,
                               const char * Buf,
-                              xbShort LockOpt) {
+                              xbShort /*LockOpt*/) {
 	xbShort rc;
 	xbLong TotalLen;
 	xbLong BlocksNeeded, BlocksAvailable;

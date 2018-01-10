@@ -11,8 +11,8 @@ xbShort xbCdx::CreateIndex(const char * filename,
 xbShort xbCdx::CreateIndex(const char * filename,
                            const char * tagName,
                            const char * expr,
-                           xbShort unique,
-                           xbShort overwrite) {
+                           xbShort /*unique*/,
+                           xbShort /*overwrite*/) {
 	if (IsOpen())
 		CloseIndex();
 	SetFileName(filename);

@@ -87,17 +87,17 @@ public:
 	                            xbShort unique,
 	                            xbShort overwrite);
 
-	virtual xbShort AddTag(const char * tagname,
-	                       const char * expr,
-	                       xbShort unique,
-	                       xbShort overwrite) {
+	virtual xbShort AddTag(const char * /*tagname*/,
+	                       const char * /*expr*/,
+	                       xbShort /*unique*/,
+	                       xbShort /*overwrite*/) {
 		return 0;
 	}
 
 	virtual xbLong GetTotalNodes() { return 0; }
 	virtual xbULong GetCurDbfRec() { return 0; }
 	virtual xbShort CreateKey(xbShort, xbShort) { return 0; }
-	virtual xbShort GetCurrentKey(char * key) { return 0; }
+	virtual xbShort GetCurrentKey(char * /*key*/) { return 0; }
 	virtual xbShort AddKey(xbLong) { return 0; }
 	virtual xbShort UniqueIndex() { return 0; }
 	virtual xbShort DeleteKey(xbLong) { return 0; }
@@ -109,14 +109,14 @@ public:
 	virtual xbShort GetLastKey() { return 0; }
 	virtual xbShort GetFirstKey() { return 0; }
 	virtual xbShort GetPrevKey() { return 0; }
-	virtual xbShort ReIndex(void (*statusFunc)(xbLong itemNum,
+	virtual xbShort ReIndex(void (* /*statusFunc*/)(xbLong itemNum,
 	                                           xbLong numItems) = 0) {
 		return 0;
 	}
 	virtual xbShort KeyExists(xbDouble) { return 0; }
-	virtual void GetExpression(char * buf, int len) {}
+	virtual void GetExpression(char * /*buf*/, int /*len*/) {}
 #ifdef XBASE_DEBUG
-	virtual void DumpHdrNode(xbShort Option){};
+	virtual void DumpHdrNode(xbShort /*Option*/){};
 	virtual void DumpNodeRec(xbLong){};
 	virtual void DumpNodeChain(){};
 	virtual xbShort CheckIndexIntegrity(xbShort) { return 0; };

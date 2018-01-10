@@ -51,7 +51,7 @@ public:
 	//  Key ), 0 ); }
 	virtual xbShort KeyExists(xbDouble) = 0;
 	virtual xbShort TouchIndex() { return XB_NO_ERROR; }
-	virtual void SetNodeSize(xbShort size) {}
+	virtual void SetNodeSize(xbShort /*size*/) {}
 	virtual xbShort GetNodeSize() { return NodeSize; }
 	virtual void GetExpression(char * buf, int len) = 0;
 	virtual void Flush();

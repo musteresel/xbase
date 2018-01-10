@@ -95,4 +95,6 @@ int bmain() {
 		MyFile.AppendRecord();
 	}
 	std::cout << " Done." << std::endl;
+
+	return 0;
 }

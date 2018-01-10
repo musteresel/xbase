@@ -88,13 +88,13 @@ class XBDLLEXPORT noLock : xbLock {
 public:
 	noLock(xbDbf * pdbf) : xbLock(pdbf){};
 	virtual ~noLock() {}
-	virtual xbShort LockTableHeader(xbShort LockType) { return XB_NO_ERROR; }
-	virtual xbShort LockTable(xbShort LockType) { return XB_NO_ERROR; }
-	virtual xbShort LockRecord(xbShort LockType, xbULong RecNo) {
+	virtual xbShort LockTableHeader(xbShort /*LockType*/) { return XB_NO_ERROR; }
+	virtual xbShort LockTable(xbShort /*LockType*/) { return XB_NO_ERROR; }
+	virtual xbShort LockRecord(xbShort /*LockType*/, xbULong /*RecNo*/) {
 		return XB_NO_ERROR;
 	}
-	virtual xbShort LockMemo(xbShort LockType) { return XB_NO_ERROR; }
-	virtual xbShort LockIndex(xbShort LockType) { return XB_NO_ERROR; }
+	virtual xbShort LockMemo(xbShort /*LockType*/) { return XB_NO_ERROR; }
+	virtual xbShort LockIndex(xbShort /*LockType*/) { return XB_NO_ERROR; }
 	virtual xbShort UnlockAll() { return XB_NO_ERROR; }
 };
 

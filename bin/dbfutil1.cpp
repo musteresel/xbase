@@ -1109,7 +1109,7 @@ void MyClass::SetRetryCount() {
 /************************************************************************/
 #ifdef XB_MEMO_FIELDS
 
-void MyClass::LockMemoFile(xbShort LockType) {
+void MyClass::LockMemoFile(xbShort /*LockType*/) {
 	//  rc = d.LockMemoFile( LockType );
 	//  x.DisplayError( rc );
 	std::cout << "no memo locking here" << std::endl;
@@ -1119,7 +1119,7 @@ void MyClass::LockMemoFile(xbShort LockType) {
 
 /************************************************************************/
 
-void MyClass::LockIndexFile(xbShort LockType) {
+void MyClass::LockIndexFile(xbShort /*LockType*/) {
 	if (ix) {
 		//    rc = ix->LockIndex( LockType );
 		//    x.DisplayError( rc );

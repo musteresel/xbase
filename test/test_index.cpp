@@ -7,12 +7,14 @@ struct Index : public ::testing::Test {
 		x = new xbXBase();
 		d = new xbDbf(x);
 
+		/*
 		xbSchema MyRecord[] = {
 			{"CHARFLD1", XB_CHAR_FLD, 6, 0},
 			{"CHARFLD2", XB_CHAR_FLD, 6, 0},
 			{"NUMFLD1", XB_NUMERIC_FLD, 6, 0},
 			{"", 0, 0, 0}
 		};
+		*/
 	}
 	virtual void TearDown() override {
 		delete d;
