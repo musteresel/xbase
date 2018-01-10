@@ -12,3 +12,5 @@ target_link_libraries(
 		gtest
 		xbase64_static
 )
+
+add_custom_target(check COMMAND ./tests)
