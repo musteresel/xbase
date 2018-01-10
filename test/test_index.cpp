@@ -1,4 +1,27 @@
+#include <gtest/gtest.h>
+
 #include <xbase64/xbase64.h>
+
+struct Index : public ::testing::Test {
+	virtual void SetUp() override {
+		x = new xbXBase();
+		d = new xbDbf(x);
+
+		xbSchema MyRecord[] = {
+			{"CHARFLD1", XB_CHAR_FLD, 6, 0},
+			{"CHARFLD2", XB_CHAR_FLD, 6, 0},
+			{"NUMFLD1", XB_NUMERIC_FLD, 6, 0},
+			{"", 0, 0, 0}
+		};
+	}
+	virtual void TearDown() override {
+		delete d;
+		delete x;
+	}
+
+	xbXBase * x;
+	xbDbf * d;
+};
 
 int CheckIndex(
 #ifdef XB_INDEX_NDX
@@ -16,7 +39,7 @@ int CheckIndex(
 #endif
 );
 
-int main() {
+int cmain() {
 	xbShort f1, f2, f3, rc, sts = 0;
 	char charbuf[10];
 

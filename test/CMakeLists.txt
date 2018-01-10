@@ -1,21 +1,11 @@
-set(
-	LIBTESTS
-		indextst
-		exptest
-		locktest
-		testdate
-		lfiletst
-)
-foreach(LIBTEST ${LIBTESTS})
-	add_executable(${LIBTEST}_shared ${LIBTEST}.cpp)
-	add_executable(${LIBTEST}_static ${LIBTEST}.cpp)
-	target_link_libraries(${LIBTEST}_shared xbase64_shared)
-	target_link_libraries(${LIBTEST}_static xbase64_static)
-endforeach()
-
 add_executable(
 	tests
-		tests.cpp
+		main.cpp
+		test_date.cpp
+		test_exp.cpp
+		test_index.cpp
+		test_lfile.cpp
+		test_lock.cpp
 )
 target_link_libraries(
 	tests

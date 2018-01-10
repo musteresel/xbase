@@ -1,6 +1,8 @@
+#include <gtest/gtest.h>
+
 #include <xbase64/xbase64.h>
 
-int main() {
+int bmain() {
 	xbShort f1, f2, f3, f4, rc;
 #ifdef XB_MEMO_FIELDS
 	xbShort f5;
